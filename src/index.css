@@ -58,14 +58,14 @@
     --wd-glow-cyan: 190 100% 45%;
     --wd-glow-gold: 38 70% 50%;
 
-    /* Semantic surface tokens — light-mode frosted glass (clean, no texture) */
-    --wd-surface-glass: 0 0% 100% / 0.55;
-    --wd-surface-glass-hover: 0 0% 100% / 0.65;
-    --wd-border-glass: 0 0% 100% / 0.70;
-    --wd-border-glass-strong: 0 0% 100% / 0.85;
-    --wd-glass-border-top: 0 0% 100% / 0.90;
-    --wd-glass-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
-    --wd-glass-shadow-hover: 0 2px 4px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.05);
+    /* Semantic surface tokens — light-mode glassmorphism */
+    --wd-surface-glass: 0 0% 100% / 0.25;
+    --wd-surface-glass-hover: 0 0% 100% / 0.35;
+    --wd-border-glass: 0 0% 100% / 0.50;
+    --wd-border-glass-strong: 0 0% 100% / 0.65;
+    --wd-glass-border-top: 0 0% 100% / 0.75;
+    --wd-glass-shadow: 0 0 1px rgba(0,0,0,0.04), 0 4px 24px rgba(0,0,0,0.04);
+    --wd-glass-shadow-hover: 0 0 1px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.06);
     --wd-glass-shine: none;
     --wd-text-primary: 220 50% 12%;
     --wd-text-secondary: 220 20% 36%;
@@ -241,8 +241,8 @@
 .wd-glow-card {
   position: relative;
   background: hsl(var(--wd-surface-glass));
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.8);
   border: 1px solid hsl(var(--wd-border-glass));
   border-top: 1px solid hsl(var(--wd-glass-border-top));
   box-shadow: var(--wd-glass-shadow);
@@ -294,8 +294,8 @@
 /* Glassmorphism surface — theme-aware with liquid glass treatment */
 .wd-glass {
   background: hsl(var(--wd-surface-glass));
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.8);
   border: 1px solid hsl(var(--wd-border-glass));
   border-top: 1px solid hsl(var(--wd-glass-border-top));
   box-shadow: var(--wd-glass-shadow);

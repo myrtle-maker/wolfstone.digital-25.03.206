@@ -119,7 +119,7 @@ const Index = () => {
       />
 
       {/* ═══════ FULL-PAGE CITATION FLOW NETWORK ═══════ */}
-      <AuroraBackground intensity={0.6} speed={0.5} fullPage />
+      <AuroraBackground intensity={0.75} speed={0.5} fullPage />
 
       {/* ═══════ HERO ═══════ */}
       <section className="relative pt-20">

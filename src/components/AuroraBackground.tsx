@@ -202,8 +202,8 @@ const AuroraBackground = ({
       ctx!.clearRect(0, 0, W, H);
 
       const dark = isDark;
-      const cyanRGB = dark ? "0, 210, 245" : "0, 155, 180";
-      const navyRGB = dark ? "140, 170, 200" : "25, 45, 70";
+      const cyanRGB = dark ? "0, 210, 245" : "0, 140, 165";
+      const navyRGB = dark ? "140, 170, 200" : "20, 40, 65";
       const pulseRGB = dark ? "0, 230, 255" : "0, 184, 217";
       const labelColor = dark
         ? `rgba(0, 210, 245, 0.5)`
@@ -280,10 +280,10 @@ const AuroraBackground = ({
           (a.type === "source" && b.type === "ai") ||
           (a.type === "ai" && b.type === "source");
         const rgb = isImportant ? cyanRGB : navyRGB;
-        const alpha = e.strength * (dark ? 0.12 : 0.13) * intensityMul;
+        const alpha = e.strength * (dark ? 0.12 : 0.22) * intensityMul;
 
         ctx!.strokeStyle = `rgba(${rgb}, ${alpha})`;
-        ctx!.lineWidth = isImportant ? (dark ? 1 : 1.2) : (dark ? 0.5 : 0.7);
+        ctx!.lineWidth = isImportant ? (dark ? 1 : 1.5) : (dark ? 0.5 : 0.8);
 
         const mx = (a.x + b.x) / 2;
         const my = (a.y + b.y) / 2;
@@ -365,8 +365,8 @@ const AuroraBackground = ({
 
         if (n.type === "ai") {
           // Halo ring
-          ctx!.strokeStyle = `rgba(${cyanRGB}, ${(dark ? 0.1 : 0.1) * intensityMul})`;
-          ctx!.lineWidth = dark ? 1 : 1.3;
+          ctx!.strokeStyle = `rgba(${cyanRGB}, ${(dark ? 0.1 : 0.18) * intensityMul})`;
+          ctx!.lineWidth = dark ? 1 : 1.5;
           ctx!.beginPath();
           ctx!.arc(n.x, n.y, r * 2.5, 0, Math.PI * 2);
           ctx!.stroke();
@@ -382,7 +382,7 @@ const AuroraBackground = ({
           );
           g.addColorStop(
             0,
-            `rgba(${cyanRGB}, ${(dark ? 0.25 : 0.22) * intensityMul})`
+            `rgba(${cyanRGB}, ${(dark ? 0.25 : 0.35) * intensityMul})`
           );
           g.addColorStop(1, `rgba(${cyanRGB}, 0)`);
           ctx!.fillStyle = g;
@@ -391,7 +391,7 @@ const AuroraBackground = ({
           ctx!.fill();
 
           // Core
-          ctx!.fillStyle = `rgba(${cyanRGB}, ${(dark ? 0.4 : 0.35) * intensityMul})`;
+          ctx!.fillStyle = `rgba(${cyanRGB}, ${(dark ? 0.4 : 0.5) * intensityMul})`;
           ctx!.beginPath();
           ctx!.arc(n.x, n.y, r, 0, Math.PI * 2);
           ctx!.fill();
@@ -408,7 +408,7 @@ const AuroraBackground = ({
           const g = ctx!.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 2);
           g.addColorStop(
             0,
-            `rgba(${cyanRGB}, ${(dark ? 0.2 : 0.18) * intensityMul})`
+            `rgba(${cyanRGB}, ${(dark ? 0.2 : 0.3) * intensityMul})`
           );
           g.addColorStop(1, `rgba(${cyanRGB}, 0)`);
           ctx!.fillStyle = g;
@@ -417,13 +417,13 @@ const AuroraBackground = ({
           ctx!.fill();
 
           // Core
-          ctx!.fillStyle = `rgba(${cyanRGB}, ${(dark ? 0.3 : 0.25) * intensityMul})`;
+          ctx!.fillStyle = `rgba(${cyanRGB}, ${(dark ? 0.3 : 0.4) * intensityMul})`;
           ctx!.beginPath();
           ctx!.arc(n.x, n.y, r, 0, Math.PI * 2);
           ctx!.fill();
         } else {
           // Relay — small, subtle
-          ctx!.fillStyle = `rgba(${navyRGB}, ${(dark ? 0.15 : 0.14) * intensityMul})`;
+          ctx!.fillStyle = `rgba(${navyRGB}, ${(dark ? 0.15 : 0.22) * intensityMul})`;
           ctx!.beginPath();
           ctx!.arc(n.x, n.y, r, 0, Math.PI * 2);
           ctx!.fill();
