@@ -146,14 +146,14 @@ const CitationTicker = ({ variant = "light" }: CitationTickerProps) => {
   );
 
   return (
-    <div className="relative hidden h-[560px] w-full overflow-hidden rounded-[20px] bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] lg:block xl:h-[620px]">
+    <div className="relative hidden h-[560px] w-full overflow-hidden rounded-[20px] wd-glass lg:block xl:h-[620px]">
       <div
         className="pointer-events-none absolute left-0 right-0 top-0 z-10 h-16 rounded-t-[20px]"
-        style={{ background: "linear-gradient(to bottom, hsl(220 50% 6% / 0.8), transparent)" }}
+        style={{ background: isDark ? "linear-gradient(to bottom, hsl(220 50% 6% / 0.8), transparent)" : "linear-gradient(to bottom, hsl(215 30% 94% / 0.9), transparent)" }}
       />
       <div
         className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-16 rounded-b-[20px]"
-        style={{ background: "linear-gradient(to top, hsl(220 50% 6% / 0.8), transparent)" }}
+        style={{ background: isDark ? "linear-gradient(to top, hsl(220 50% 6% / 0.8), transparent)" : "linear-gradient(to top, hsl(215 30% 94% / 0.9), transparent)" }}
       />
 
       <div

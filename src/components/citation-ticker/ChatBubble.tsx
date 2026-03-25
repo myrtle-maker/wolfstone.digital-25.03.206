@@ -46,31 +46,31 @@ const ChatBubble = ({ isDark, isStreaming = false, text, role }: ChatBubbleProps
         }`}
         style={{
           backgroundColor: isUser
-            ? "hsl(190 100% 45% / 0.15)"
+            ? isDark ? "hsl(190 100% 45% / 0.15)" : "hsl(190 100% 42% / 0.90)"
             : isDark
               ? "hsl(0 0% 100% / 0.06)"
-              : "hsl(var(--wd-white) / 0.88)",
+              : "hsl(0 0% 100% / 0.92)",
           border: isUser
-            ? "1px solid hsl(190 100% 45% / 0.2)"
-            : `1px solid ${isDark ? "hsl(0 0% 100% / 0.08)" : "hsl(var(--wd-navy) / 0.08)"}`,
-          boxShadow: "0 4px 20px hsl(0 0% 0% / 0.15)",
+            ? `1px solid ${isDark ? "hsl(190 100% 45% / 0.2)" : "hsl(190 100% 40% / 0.3)"}`
+            : `1px solid ${isDark ? "hsl(0 0% 100% / 0.08)" : "hsl(215 20% 88% / 0.5)"}`,
+          boxShadow: isDark ? "0 4px 20px hsl(0 0% 0% / 0.15)" : "0 2px 12px hsl(0 0% 0% / 0.06)",
         }}
       >
         <p
           className={`text-[11px] leading-relaxed ${isUser ? "" : "font-mono"}`}
           style={{
             color: isUser
-              ? "hsl(var(--wd-white) / 0.92)"
+              ? isDark ? "hsl(var(--wd-white) / 0.92)" : "hsl(0 0% 100% / 0.95)"
               : isDark
                 ? "hsl(var(--wd-white) / 0.78)"
-                : "hsl(var(--wd-navy-text) / 0.78)",
+                : "hsl(var(--wd-navy-text) / 0.85)",
           }}
         >
           {renderWithBrandHighlight(text, isUser)}
           {isStreaming && (
             <span
               className="ml-0.5 inline-block h-[11px] w-[2px] animate-pulse align-middle"
-              style={{ backgroundColor: "hsl(var(--wd-white) / 0.5)" }}
+              style={{ backgroundColor: isDark ? "hsl(var(--wd-white) / 0.5)" : "hsl(var(--wd-navy-text) / 0.4)" }}
             />
           )}
         </p>
