@@ -145,23 +145,20 @@ const CitationTicker = ({ variant = "light" }: CitationTickerProps) => {
     [conversation.platform]
   );
 
-  const fadeBgSolid = isDark ? "hsl(var(--wd-cream))" : "hsl(var(--wd-navy))";
-  const fadeBgTransparent = isDark ? "hsl(var(--wd-cream) / 0)" : "hsl(var(--wd-navy) / 0)";
-
   return (
-    <div className="relative hidden h-[560px] w-full overflow-hidden lg:block xl:h-[620px]">
+    <div className="relative hidden h-[560px] w-full overflow-hidden rounded-[20px] bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] lg:block xl:h-[620px]">
       <div
-        className="pointer-events-none absolute left-0 right-0 top-0 z-10 h-16"
-        style={{ background: `linear-gradient(to bottom, ${fadeBgSolid}, ${fadeBgTransparent})` }}
+        className="pointer-events-none absolute left-0 right-0 top-0 z-10 h-16 rounded-t-[20px]"
+        style={{ background: "linear-gradient(to bottom, hsl(220 50% 6% / 0.8), transparent)" }}
       />
       <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-16"
-        style={{ background: `linear-gradient(to top, ${fadeBgSolid}, ${fadeBgTransparent})` }}
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-16 rounded-b-[20px]"
+        style={{ background: "linear-gradient(to top, hsl(220 50% 6% / 0.8), transparent)" }}
       />
 
       <div
         ref={scrollRef}
-        className="flex h-full flex-col overflow-y-auto px-2 pb-10 pt-10"
+        className="flex h-full flex-col overflow-y-auto px-4 pb-10 pt-10"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         <div key={conversation.platform} className="mb-4 flex animate-fade-in items-center gap-2 pl-1">
@@ -187,8 +184,8 @@ const CitationTicker = ({ variant = "light" }: CitationTickerProps) => {
               <div
                 className="rounded-[14px] rounded-bl-[4px] px-4 py-3"
                 style={{
-                  backgroundColor: isDark ? "hsl(var(--wd-midnight) / 0.9)" : "hsl(var(--wd-white) / 0.88)",
-                  border: `1px solid ${isDark ? "hsl(var(--wd-white) / 0.06)" : "hsl(var(--wd-navy) / 0.08)"}`,
+                  backgroundColor: isDark ? "hsl(0 0% 100% / 0.06)" : "hsl(var(--wd-white) / 0.88)",
+                  border: `1px solid ${isDark ? "hsl(0 0% 100% / 0.08)" : "hsl(var(--wd-navy) / 0.08)"}`,
                 }}
               >
                 <TypingDots />

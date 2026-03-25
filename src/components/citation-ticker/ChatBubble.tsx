@@ -46,14 +46,14 @@ const ChatBubble = ({ isDark, isStreaming = false, text, role }: ChatBubbleProps
         }`}
         style={{
           backgroundColor: isUser
-            ? "hsl(var(--wd-navy) / 0.94)"
+            ? "hsl(190 100% 45% / 0.15)"
             : isDark
-              ? "hsl(var(--wd-midnight) / 0.9)"
+              ? "hsl(0 0% 100% / 0.06)"
               : "hsl(var(--wd-white) / 0.88)",
           border: isUser
-            ? "none"
-            : `1px solid ${isDark ? "hsl(var(--wd-white) / 0.06)" : "hsl(var(--wd-navy) / 0.08)"}`,
-          boxShadow: "0 4px 20px hsl(var(--wd-navy) / 0.04)",
+            ? "1px solid hsl(190 100% 45% / 0.2)"
+            : `1px solid ${isDark ? "hsl(0 0% 100% / 0.08)" : "hsl(var(--wd-navy) / 0.08)"}`,
+          boxShadow: "0 4px 20px hsl(0 0% 0% / 0.15)",
         }}
       >
         <p
