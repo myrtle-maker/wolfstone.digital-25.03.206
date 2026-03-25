@@ -52,13 +52,13 @@ const SEOPage = () => (
 
     <section className="bg-wd-ice py-20 md:py-28">
       <div className="container">
-        <ScrollReveal><h2 className="text-h1 text-wd-navy mb-6">What AI SEO means in 2026</h2></ScrollReveal>
+        <ScrollReveal><h2 className="text-h1 text-foreground mb-6">What AI SEO means in 2026</h2></ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <p className="text-body-lg text-[#4A6080] max-ch-70 mb-4">
+          <p className="text-body-lg text-muted-foreground max-ch-70 mb-4">
             60%+ of Google searches now show AI Overviews. 900 million weekly ChatGPT users ask AI for recommendations instead of scrolling search results. Traditional SEO alone isn't enough — your content needs to be structured for both search engine crawlers and LLM extractors.
           </p>
-          <p className="text-body text-[#4A6080] max-ch-70">
-            AI SEO combines technical optimisation with <Link to="/services/geo/" className="text-wd-blue font-bold hover:underline">generative engine optimisation (GEO)</Link> to ensure your brand ranks in traditional search and gets cited by AI platforms. It's the difference between being found and being recommended.
+          <p className="text-body text-muted-foreground max-ch-70">
+            AI SEO combines technical optimisation with <Link to="/services/geo/" className="text-primary font-bold hover:underline">generative engine optimisation (GEO)</Link> to ensure your brand ranks in traditional search and gets cited by AI platforms. It's the difference between being found and being recommended.
           </p>
         </ScrollReveal>
       </div>
@@ -119,7 +119,7 @@ const SEOPage = () => (
 
     <section className="bg-wd-ice py-16 md:py-20">
       <div className="container">
-        <ScrollReveal><h2 className="text-h1 text-wd-navy mb-8">Related services</h2></ScrollReveal>
+        <ScrollReveal><h2 className="text-h1 text-foreground mb-8">Related services</h2></ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { icon: Eye, title: "Generative engine optimisation", path: "/services/geo/", desc: "Get cited by AI platforms — not just ranked on Google." },
@@ -127,11 +127,11 @@ const SEOPage = () => (
             { icon: FileText, title: "Content strategy", path: "/services/content/", desc: "SEO & GEO optimised content that ranks and converts." },
           ].map((s, i) => (
             <ScrollReveal key={s.path} delay={i * 0.07}>
-              <Link to={s.path} className="block bg-white border border-wd-navy/[0.06] rounded-[12px] p-6 hover:border-wd-blue/30 transition-colors duration-200 h-full shadow-sm group">
-                <s.icon className="w-8 h-8 text-wd-blue mb-4" />
-                <h3 className="text-h3 text-wd-navy mb-2 group-hover:text-wd-blue transition-colors">{s.title}</h3>
-                <p className="text-body-sm text-[#4A6080]">{s.desc}</p>
-                <span className="text-body-sm text-wd-blue font-bold mt-3 inline-flex items-center gap-1">Learn more <ArrowRight size={14} /></span>
+              <Link to={s.path} className="block bg-card border border-border rounded-[12px] p-6 hover:border-primary/30 transition-colors duration-200 h-full shadow-sm group">
+                <s.icon className="w-8 h-8 text-primary mb-4" />
+                <h3 className="text-h3 text-foreground mb-2 group-hover:text-primary transition-colors">{s.title}</h3>
+                <p className="text-body-sm text-muted-foreground">{s.desc}</p>
+                <span className="text-body-sm text-primary font-bold mt-3 inline-flex items-center gap-1">Learn more <ArrowRight size={14} /></span>
               </Link>
             </ScrollReveal>
           ))}

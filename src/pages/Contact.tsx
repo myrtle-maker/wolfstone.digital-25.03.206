@@ -70,8 +70,8 @@ const Contact = () => {
     setSubmitted(true);
   };
 
-  const inputClass = "w-full bg-[hsl(var(--wd-stone))] border border-white/[0.08] rounded-[12px] px-4 py-3 text-[hsl(var(--wd-navy-text))] placeholder:text-[hsl(var(--wd-navy-text))]/40 focus:outline-none focus:border-[hsl(var(--wd-blue))] focus:ring-1 focus:ring-[hsl(var(--wd-blue))]/20 transition-colors duration-200 text-body";
-  const labelClass = "text-overline text-[hsl(var(--wd-navy-text))]/55 block mb-2";
+  const inputClass = "w-full bg-muted border border-border rounded-[12px] px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors duration-200 text-body";
+  const labelClass = "text-overline text-muted-foreground block mb-2";
 
   return (
     <main className="pt-20">
@@ -87,36 +87,36 @@ const Contact = () => {
             <span className="text-overline text-primary mb-4 block">Get in touch</span>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h1 className="text-display mb-6 text-white">Let's talk.</h1>
+            <h1 className="text-display mb-6 text-foreground">Let's talk.</h1>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <p className="text-body-lg text-wd-muted max-ch-70">
+            <p className="text-body-lg text-muted-foreground max-ch-70">
               Get in touch to discuss how we can scale your brand's digital visibility — across search, AI, and beyond.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      <section className="bg-[hsl(var(--wd-cream))] wd-texture py-20 md:py-28">
+      <section className="bg-background wd-texture py-20 md:py-28">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
               <ScrollReveal>
                 <div className="space-y-6">
-                  <div className="border-l-2 border-[hsl(var(--wd-blue))]/30 pl-6">
+                  <div className="border-l-2 border-primary/30 pl-6">
                     <h3 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-1">Premium partnerships</h3>
-                    <p className="text-body-sm text-[hsl(var(--wd-navy-text))]/55">£50,000+/month — full strategic control, category exclusivity, and our complete team dedicated to your brand.</p>
+                    <p className="text-body-sm text-muted-foreground">£50,000+/month — full strategic control, category exclusivity, and our complete team dedicated to your brand.</p>
                   </div>
-                  <div className="border-l-2 border-[hsl(var(--wd-blue))]/30 pl-6">
+                  <div className="border-l-2 border-primary/30 pl-6">
                     <h3 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-1">Enterprise engagements</h3>
-                    <p className="text-body-sm text-[hsl(var(--wd-navy-text))]/55">£20,000–£50,000/month — multi-channel strategies across SEO, GEO, PR, and content with priority execution.</p>
+                    <p className="text-body-sm text-muted-foreground">£20,000–£50,000/month — multi-channel strategies across SEO, GEO, PR, and content with priority execution.</p>
                   </div>
-                  <div className="border-l-2 border-[hsl(var(--wd-blue))]/30 pl-6">
+                  <div className="border-l-2 border-primary/30 pl-6">
                     <h3 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-1">Growth retainers</h3>
-                    <p className="text-body-sm text-[hsl(var(--wd-navy-text))]/55">From £5,000/month — focused execution on one or two disciplines. Every engagement is bespoke.</p>
+                    <p className="text-body-sm text-muted-foreground">From £5,000/month — focused execution on one or two disciplines. Every engagement is bespoke.</p>
                   </div>
                   <div className="mt-8 p-5 bg-white/60 border border-[hsl(var(--wd-warm-grey))] rounded-[12px]">
-                    <p className="text-body-sm text-[hsl(var(--wd-navy-text))]/70">
+                    <p className="text-body-sm text-muted-foreground">
                       <span className="font-bold text-[hsl(var(--wd-navy-text))]">Why the questions?</span> We're selective about who we work with — it means every client gets our full strategic attention. These questions help us understand if we're the right fit before we both invest time.
                     </p>
                   </div>
@@ -130,7 +130,7 @@ const Contact = () => {
                   <div className="bg-white border border-[hsl(var(--wd-warm-grey))] rounded-[12px] p-10 text-center shadow-sm">
                     <CheckCircle className="w-12 h-12 text-[hsl(var(--wd-blue))] mx-auto mb-4" />
                     <h3 className="text-h2 text-[hsl(var(--wd-navy-text))] mb-2">Application received.</h3>
-                    <p className="text-body text-[hsl(var(--wd-navy-text))]/55">We review every enquiry personally. If there's a fit, we'll be in touch within 24 hours to schedule a discovery call.</p>
+                    <p className="text-body text-muted-foreground">We review every enquiry personally. If there's a fit, we'll be in touch within 24 hours to schedule a discovery call.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="bg-white border border-[hsl(var(--wd-warm-grey))] rounded-[12px] p-8 space-y-5 shadow-sm">
@@ -183,7 +183,7 @@ const Contact = () => {
                             <option key={opt} value={opt}>{opt}</option>
                           ))}
                         </select>
-                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[hsl(var(--wd-navy-text))]/40 pointer-events-none" />
+                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
                       </div>
                       {errors.budget && <p className="text-caption text-destructive mt-1">{errors.budget}</p>}
                     </div>
@@ -200,7 +200,7 @@ const Contact = () => {
                             className={`px-3 py-2 rounded-md text-[12px] font-bold tracking-wide transition-all border ${
                               form.services.includes(service)
                                 ? "bg-[hsl(var(--wd-blue))] text-white border-[hsl(var(--wd-blue))]"
-                                : "bg-[hsl(var(--wd-stone))] text-[hsl(var(--wd-navy-text))]/60 border-[hsl(var(--wd-warm-grey))] hover:border-[hsl(var(--wd-blue))]/40"
+                                : "bg-[hsl(var(--wd-stone))] text-muted-foreground border-[hsl(var(--wd-warm-grey))] hover:border-[hsl(var(--wd-blue))]/40"
                             }`}
                           >
                             {service}
@@ -228,7 +228,7 @@ const Contact = () => {
                       Submit enquiry <Send size={16} />
                     </button>
 
-                    <p className="text-[10px] text-[hsl(var(--wd-navy-text))]/30 text-center">
+                    <p className="text-[10px] text-muted-foreground/50 text-center">
                       We typically respond within 24 hours. Only qualified enquiries will receive a reply.
                     </p>
                   </form>

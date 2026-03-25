@@ -45,9 +45,9 @@ const LegalPage = () => (
 
     <section className="bg-wd-ice py-20 md:py-28">
       <div className="container">
-        <ScrollReveal><h2 className="text-h1 text-wd-navy mb-6">Why AI visibility matters for law firms</h2></ScrollReveal>
+        <ScrollReveal><h2 className="text-h1 text-foreground mb-6">Why AI visibility matters for law firms</h2></ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <p className="text-body-lg text-[#4A6080] max-ch-70 mb-6">
+          <p className="text-body-lg text-muted-foreground max-ch-70 mb-6">
             When someone asks ChatGPT "What's the best personal injury solicitor in Manchester?" or asks Perplexity to compare conveyancing firms — your firm needs to be in that answer. AI-driven discovery is reshaping how clients find legal services. The firms that invest in <Link to="/services/llm-brand-exposure/" className="text-wd-blue font-bold hover:underline">LLM brand exposure</Link> now will dominate their markets for years.
           </p>
         </ScrollReveal>

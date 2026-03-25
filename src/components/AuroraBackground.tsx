@@ -1,276 +1,454 @@
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import { useTheme } from "@/hooks/useTheme";
 
 interface AuroraBackgroundProps {
   /** Overall brightness 0-1 */
   intensity?: number;
   /** Animation speed multiplier */
   speed?: number;
-  /** Color preset */
-  variant?: "cyan" | "gold" | "mixed";
   /** Fixed fullscreen or contained within parent */
   fullPage?: boolean;
   className?: string;
 }
 
-// GLSL vertex shader
-const vertexShader = `
-  varying vec2 vUv;
-  void main() {
-    vUv = uv;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-  }
-`;
+// Node types for the citation flow network
+interface NetworkNode {
+  type: "source" | "ai" | "relay";
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  r: number;
+  phase: number;
+  breatheSpeed: number;
+  name?: string;
+  discoveryTimer: number;
+}
 
-// GLSL fragment shader — luminous eclipse ring with corona glow
-const fragmentShader = `
-  precision mediump float;
-  uniform float uTime;
-  uniform float uIntensity;
-  uniform vec2 uResolution;
-  uniform vec3 uColor1;
-  uniform vec3 uColor2;
+interface CitationPulse {
+  fromX: number;
+  fromY: number;
+  toX: number;
+  toY: number;
+  progress: number;
+  speed: number;
+  size: number;
+  trail: Array<{ x: number; y: number; alpha: number }>;
+}
 
-  varying vec2 vUv;
+interface DiscoveryRipple {
+  x: number;
+  y: number;
+  radius: number;
+  maxRadius: number;
+  alpha: number;
+}
 
-  // Simplex noise for organic distortion
-  vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-  vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-  vec4 permute(vec4 x) { return mod289(((x * 34.0) + 10.0) * x); }
-  vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
+const AI_NAMES = ["ChatGPT", "Gemini", "Perplexity", "Copilot", "Claude"];
 
-  float snoise(vec3 v) {
-    const vec2 C = vec2(1.0 / 6.0, 1.0 / 3.0);
-    const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
-    vec3 i = floor(v + dot(v, C.yyy));
-    vec3 x0 = v - i + dot(i, C.xxx);
-    vec3 g = step(x0.yzx, x0.xyz);
-    vec3 l = 1.0 - g;
-    vec3 i1 = min(g.xyz, l.zxy);
-    vec3 i2 = max(g.xyz, l.zxy);
-    vec3 x1 = x0 - i1 + C.xxx;
-    vec3 x2 = x0 - i2 + C.yyy;
-    vec3 x3 = x0 - D.yyy;
-    i = mod289(i);
-    vec4 p = permute(permute(permute(
-      i.z + vec4(0.0, i1.z, i2.z, 1.0))
-      + i.y + vec4(0.0, i1.y, i2.y, 1.0))
-      + i.x + vec4(0.0, i1.x, i2.x, 1.0));
-    float n_ = 0.142857142857;
-    vec3 ns = n_ * D.wyz - D.xzx;
-    vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
-    vec4 x_ = floor(j * ns.z);
-    vec4 y_ = floor(j - 7.0 * x_);
-    vec4 x = x_ * ns.x + ns.yyyy;
-    vec4 y = y_ * ns.x + ns.yyyy;
-    vec4 h = 1.0 - abs(x) - abs(y);
-    vec4 b0 = vec4(x.xy, y.xy);
-    vec4 b1 = vec4(x.zw, y.zw);
-    vec4 s0 = floor(b0) * 2.0 + 1.0;
-    vec4 s1 = floor(b1) * 2.0 + 1.0;
-    vec4 sh = -step(h, vec4(0.0));
-    vec4 a0 = b0.xzyw + s0.xzyw * sh.xxyy;
-    vec4 a1 = b1.xzyw + s1.xzyw * sh.zzww;
-    vec3 p0 = vec3(a0.xy, h.x);
-    vec3 p1 = vec3(a0.zw, h.y);
-    vec3 p2 = vec3(a1.xy, h.z);
-    vec3 p3 = vec3(a1.zw, h.w);
-    vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2,p2), dot(p3,p3)));
-    p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
-    vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
-    m = m * m;
-    return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
-  }
-
-  void main() {
-    float aspect = uResolution.x / uResolution.y;
-    vec2 uv = vUv;
-
-    // Center point — ring positioned below viewport so only the top arc crowns the hero
-    vec2 center = vec2(0.5, -0.55);
-    vec2 p = (uv - center) * vec2(aspect, 1.0);
-
-    float dist = length(p);
-    float angle = atan(p.y, p.x);
-
-    float t = uTime * 0.12;
-
-    // Ring parameters
-    float ringRadius = 1.1;
-    float ringDelta = abs(dist - ringRadius);
-
-    // Noise distortion along the ring for organic feel
-    float noiseScale = 0.3;
-    float n1 = snoise(vec3(p * 2.0, t * 0.5)) * noiseScale;
-    float n2 = snoise(vec3(p * 3.5 + 10.0, t * 0.3)) * noiseScale * 0.5;
-    float distortedDelta = abs(dist + n1 + n2 - ringRadius);
-
-    // === CORE RING — tight, bright, white-hot ===
-    float coreWidth = 0.015;
-    float core = exp(-distortedDelta * distortedDelta / (coreWidth * coreWidth));
-
-    // === INNER GLOW — warm, medium spread ===
-    float innerWidth = 0.06;
-    float innerGlow = exp(-distortedDelta * distortedDelta / (innerWidth * innerWidth));
-
-    // === OUTER GLOW — wide, diffuse halo ===
-    float outerWidth = 0.22;
-    float outerGlow = exp(-distortedDelta * distortedDelta / (outerWidth * outerWidth));
-
-    // === ATMOSPHERE — very wide, faint ambient ===
-    float atmosWidth = 0.55;
-    float atmosphere = exp(-ringDelta * ringDelta / (atmosWidth * atmosWidth));
-
-    // Angular variation — brighter at the top, fading at sides
-    float angleFade = smoothstep(-0.3, 0.8, sin(angle));
-    float angleNoise = snoise(vec3(angle * 2.0, dist * 3.0, t * 0.4)) * 0.15 + 0.85;
-
-    // Pulsing animation
-    float pulse = 1.0 + 0.08 * sin(uTime * 0.5) + 0.05 * sin(uTime * 0.8 + 1.5);
-
-    // Color composition
-    vec3 white = vec3(1.0, 0.98, 0.95);
-    vec3 hotCore = mix(white, uColor1, 0.15);
-    vec3 warmGlow = mix(uColor1, uColor2, 0.3);
-    vec3 outerColor = mix(uColor2, uColor1, 0.5) * 0.7;
-    vec3 atmosColor = uColor1 * 0.25;
-
-    // Layer composition
-    vec3 col = vec3(0.0);
-    float alpha = 0.0;
-
-    // Atmosphere layer (widest, faintest)
-    float atmosAlpha = atmosphere * 0.18 * angleFade * uIntensity;
-    col += atmosColor * atmosAlpha;
-    alpha += atmosAlpha;
-
-    // Outer glow layer
-    float outerAlpha = outerGlow * 0.55 * angleFade * angleNoise * pulse * uIntensity;
-    col += outerColor * outerAlpha;
-    alpha += outerAlpha;
-
-    // Inner glow layer
-    float innerAlpha = innerGlow * 0.85 * angleFade * angleNoise * pulse * uIntensity;
-    col += warmGlow * innerAlpha;
-    alpha += innerAlpha;
-
-    // Core ring (brightest)
-    float coreAlpha = core * 1.2 * angleFade * pulse * uIntensity;
-    col += hotCore * coreAlpha;
-    alpha += coreAlpha;
-
-    // Bloom — bright spots get extra brightness
-    float bloom = core * 0.65 * angleFade * pulse * uIntensity;
-    col += white * bloom;
-    alpha += bloom * 0.35;
-
-    // Scattered light particles near the ring
-    float sparkle1 = snoise(vec3(p * 15.0, t * 2.0));
-    float sparkle2 = snoise(vec3(p * 20.0 + 50.0, t * 1.5 + 10.0));
-    float sparkleMask = innerGlow * 0.4;
-    float sparkles = max(sparkle1, 0.0) * max(sparkle2, 0.0) * sparkleMask * angleFade;
-    col += uColor1 * sparkles * 2.5 * uIntensity;
-    alpha += sparkles * 0.5 * uIntensity;
-
-    // Clamp
-    alpha = clamp(alpha, 0.0, 1.0);
-    col = clamp(col, 0.0, 1.5);
-
-    gl_FragColor = vec4(col, alpha);
-  }
-`;
-
-// Color presets
-const COLOR_PRESETS = {
-  cyan: {
-    color1: [0.0, 0.72, 0.85] as const,
-    color2: [0.22, 0.88, 1.0] as const,
-  },
-  gold: {
-    color1: [0.92, 0.68, 0.2] as const,
-    color2: [0.0, 0.72, 0.85] as const,
-  },
-  mixed: {
-    color1: [0.0, 0.72, 0.85] as const,
-    color2: [0.92, 0.68, 0.2] as const,
-  },
+const NODE_BASE_RADIUS = {
+  source: 4.5,
+  ai: 6,
+  relay: 2.5,
 };
+
+function createNode(
+  type: NetworkNode["type"],
+  x: number,
+  y: number,
+  name?: string
+): NetworkNode {
+  return {
+    type,
+    x,
+    y,
+    vx: (Math.random() - 0.5) * 0.15,
+    vy: (Math.random() - 0.5) * 0.15,
+    r: NODE_BASE_RADIUS[type] + Math.random() * 1.5,
+    phase: Math.random() * Math.PI * 2,
+    breatheSpeed: 0.008 + Math.random() * 0.006,
+    name,
+    discoveryTimer: Math.random() * 600,
+  };
+}
 
 const AuroraBackground = ({
   intensity = 0.6,
   speed = 1,
   fullPage = false,
-  variant = "cyan",
   className = "",
 }: AuroraBackgroundProps) => {
+  const { resolved } = useTheme();
+  const isDark = resolved === "dark";
   const containerRef = useRef<HTMLDivElement>(null);
-  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const frameRef = useRef<number>(0);
+  const nodesRef = useRef<NetworkNode[]>([]);
+  const pulsesRef = useRef<CitationPulse[]>([]);
+  const ripplesRef = useRef<DiscoveryRipple[]>([]);
+  const frameCountRef = useRef(0);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const canvas = document.createElement("canvas");
+    canvas.style.position = "absolute";
+    canvas.style.inset = "0";
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+    container.appendChild(canvas);
 
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: false,
-      powerPreference: "low-power",
-    });
-    // Performance: cap pixel ratio at 1 for full-page, 1.5 for contained
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, fullPage ? 1 : 1.5));
-    renderer.setClearColor(0x000000, 0);
-    container.appendChild(renderer.domElement);
-    rendererRef.current = renderer;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    const colors = COLOR_PRESETS[variant];
+    let W = 0;
+    let H = 0;
+    const dpr = Math.min(window.devicePixelRatio, fullPage ? 1 : 1.5);
 
-    const material = new THREE.ShaderMaterial({
-      vertexShader,
-      fragmentShader,
-      uniforms: {
-        uTime: { value: 0 },
-        uIntensity: { value: intensity },
-        uResolution: { value: new THREE.Vector2() },
-        uColor1: { value: new THREE.Vector3(...colors.color1) },
-        uColor2: { value: new THREE.Vector3(...colors.color2) },
-      },
-      transparent: true,
-      depthTest: false,
-      blending: THREE.AdditiveBlending,
-    });
+    function resize() {
+      W = container!.offsetWidth;
+      H = container!.offsetHeight;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width = W + "px";
+      canvas.style.height = H + "px";
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+      initNodes();
+    }
 
-    const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
-    scene.add(quad);
+    function initNodes() {
+      const nodes: NetworkNode[] = [];
+      const area = W * H;
+      const sourceCount = Math.min(Math.floor(area / 80000), 8) + 3;
+      const relayCount = Math.min(Math.floor(area / 25000), 25) + 8;
 
-    const resize = () => {
-      const w = container.offsetWidth;
-      const h = container.offsetHeight;
-      // Performance: render at reduced resolution for full-page
-      const scale = fullPage ? 0.5 : 1;
-      renderer.setSize(w * scale, h * scale, false);
-      renderer.domElement.style.width = w + "px";
-      renderer.domElement.style.height = h + "px";
-      material.uniforms.uResolution.value.set(w * scale, h * scale);
-    };
+      // Source nodes — cluster left/center
+      for (let i = 0; i < sourceCount; i++) {
+        nodes.push(
+          createNode(
+            "source",
+            W * (0.1 + Math.random() * 0.5),
+            H * (0.15 + Math.random() * 0.7)
+          )
+        );
+      }
+
+      // AI platform nodes — spread across right side
+      for (let i = 0; i < 5; i++) {
+        const angle = (i / 5) * Math.PI * 0.8 + Math.PI * 0.1;
+        nodes.push(
+          createNode(
+            "ai",
+            W * (0.55 + Math.cos(angle) * 0.3),
+            H * (0.5 + Math.sin(angle - Math.PI * 0.5) * 0.35),
+            AI_NAMES[i]
+          )
+        );
+      }
+
+      // Relay nodes — scattered
+      for (let i = 0; i < relayCount; i++) {
+        nodes.push(
+          createNode("relay", Math.random() * W, Math.random() * H)
+        );
+      }
+
+      nodesRef.current = nodes;
+      pulsesRef.current = [];
+      ripplesRef.current = [];
+    }
+
+    function spawnPulse(from: NetworkNode, to: NetworkNode) {
+      pulsesRef.current.push({
+        fromX: from.x,
+        fromY: from.y,
+        toX: to.x,
+        toY: to.y,
+        progress: 0,
+        speed: 0.008 + Math.random() * 0.006,
+        size: 2 + Math.random() * 2,
+        trail: [],
+      });
+    }
+
+    function spawnRipple(node: NetworkNode) {
+      ripplesRef.current.push({
+        x: node.x,
+        y: node.y,
+        radius: node.r,
+        maxRadius: 60 + Math.random() * 40,
+        alpha: 0.35,
+      });
+    }
 
     resize();
     const observer = new ResizeObserver(resize);
     observer.observe(container);
 
-    // Performance: throttle to ~30fps instead of 60fps
     let lastFrame = 0;
-    const targetInterval = fullPage ? 33 : 16; // 30fps full-page, 60fps contained
-    const clock = new THREE.Clock();
+    const targetInterval = fullPage ? 33 : 16;
 
     const animate = (now: number) => {
       frameRef.current = requestAnimationFrame(animate);
       if (now - lastFrame < targetInterval) return;
       lastFrame = now;
-      material.uniforms.uTime.value = clock.getElapsedTime() * speed;
-      renderer.render(scene, camera);
+      frameCountRef.current++;
+
+      const fc = frameCountRef.current;
+      const nodes = nodesRef.current;
+      const pulses = pulsesRef.current;
+      const ripples = ripplesRef.current;
+
+      ctx!.clearRect(0, 0, W, H);
+
+      const dark = isDark;
+      const cyanRGB = dark ? "0, 210, 245" : "0, 155, 180";
+      const navyRGB = dark ? "140, 170, 200" : "25, 45, 70";
+      const pulseRGB = dark ? "0, 230, 255" : "0, 184, 217";
+      const labelColor = dark
+        ? `rgba(0, 210, 245, 0.5)`
+        : `rgba(0, 140, 160, 0.45)`;
+
+      const intensityMul = intensity;
+      const speedMul = speed;
+
+      // Update nodes
+      for (const n of nodes) {
+        n.x += n.vx * speedMul;
+        n.y += n.vy * speedMul;
+        n.phase += n.breatheSpeed * speedMul;
+
+        if (n.x < 20 || n.x > W - 20) n.vx *= -1;
+        if (n.y < 20 || n.y > H - 20) n.vy *= -1;
+        n.x = Math.max(10, Math.min(W - 10, n.x));
+        n.y = Math.max(10, Math.min(H - 10, n.y));
+
+        // Source nodes emit discovery events
+        if (n.type === "source") {
+          n.discoveryTimer -= speedMul;
+          if (n.discoveryTimer <= 0) {
+            n.discoveryTimer = 400 + Math.random() * 800;
+            spawnRipple(n);
+            let closest: NetworkNode | null = null;
+            let closestDist = 300;
+            for (const other of nodes) {
+              if (other === n) continue;
+              if (other.type === "relay" || other.type === "ai") {
+                const d = Math.hypot(n.x - other.x, n.y - other.y);
+                if (d < closestDist) {
+                  closestDist = d;
+                  closest = other;
+                }
+              }
+            }
+            if (closest) spawnPulse(n, closest);
+          }
+        }
+      }
+
+      // Compute edges
+      const maxDist = 220;
+      const edges: Array<{
+        i: number;
+        j: number;
+        dist: number;
+        strength: number;
+      }> = [];
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < maxDist) {
+            let strength = 1 - dist / maxDist;
+            if (
+              (nodes[i].type === "source" && nodes[j].type === "ai") ||
+              (nodes[i].type === "ai" && nodes[j].type === "source")
+            ) {
+              strength *= 1.8;
+            }
+            edges.push({ i, j, dist, strength: Math.min(strength, 1) });
+          }
+        }
+      }
+
+      // Draw edges
+      for (const e of edges) {
+        const a = nodes[e.i],
+          b = nodes[e.j];
+        const isImportant =
+          (a.type === "source" && b.type === "ai") ||
+          (a.type === "ai" && b.type === "source");
+        const rgb = isImportant ? cyanRGB : navyRGB;
+        const alpha = e.strength * (dark ? 0.12 : 0.13) * intensityMul;
+
+        ctx!.strokeStyle = `rgba(${rgb}, ${alpha})`;
+        ctx!.lineWidth = isImportant ? (dark ? 1 : 1.2) : (dark ? 0.5 : 0.7);
+
+        const mx = (a.x + b.x) / 2;
+        const my = (a.y + b.y) / 2;
+        const offset = e.dist * 0.08;
+        const cx = mx + Math.sin(fc * 0.003 + e.i) * offset;
+        const cy = my + Math.cos(fc * 0.003 + e.j) * offset;
+
+        ctx!.beginPath();
+        ctx!.moveTo(a.x, a.y);
+        ctx!.quadraticCurveTo(cx, cy, b.x, b.y);
+        ctx!.stroke();
+      }
+
+      // Draw ripples
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const r = ripples[i];
+        r.radius += 0.8 * speedMul;
+        r.alpha -= 0.003 * speedMul;
+        if (r.alpha <= 0 || r.radius > r.maxRadius) {
+          ripples.splice(i, 1);
+          continue;
+        }
+        ctx!.strokeStyle = `rgba(${cyanRGB}, ${r.alpha * intensityMul})`;
+        ctx!.lineWidth = 1.5;
+        ctx!.beginPath();
+        ctx!.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+        ctx!.stroke();
+      }
+
+      // Draw pulses
+      for (let i = pulses.length - 1; i >= 0; i--) {
+        const p = pulses[i];
+        p.progress += p.speed * speedMul;
+        if (p.progress >= 1) {
+          pulses.splice(i, 1);
+          continue;
+        }
+        const t = p.progress;
+        const x = p.fromX + (p.toX - p.fromX) * t;
+        const y = p.fromY + (p.toY - p.fromY) * t;
+
+        p.trail.push({ x, y, alpha: 0.6 });
+        if (p.trail.length > 12) p.trail.shift();
+
+        for (let j = 0; j < p.trail.length; j++) {
+          const tr = p.trail[j];
+          tr.alpha *= 0.88;
+          ctx!.fillStyle = `rgba(${pulseRGB}, ${tr.alpha * 0.4 * intensityMul})`;
+          ctx!.beginPath();
+          ctx!.arc(
+            tr.x,
+            tr.y,
+            p.size * 0.5 * (j / p.trail.length),
+            0,
+            Math.PI * 2
+          );
+          ctx!.fill();
+        }
+
+        const glow = ctx!.createRadialGradient(x, y, 0, x, y, p.size * 3);
+        glow.addColorStop(0, `rgba(${pulseRGB}, ${0.5 * intensityMul})`);
+        glow.addColorStop(0.5, `rgba(${pulseRGB}, ${0.15 * intensityMul})`);
+        glow.addColorStop(1, `rgba(${pulseRGB}, 0)`);
+        ctx!.fillStyle = glow;
+        ctx!.beginPath();
+        ctx!.arc(x, y, p.size * 3, 0, Math.PI * 2);
+        ctx!.fill();
+
+        ctx!.fillStyle = `rgba(${pulseRGB}, ${0.8 * intensityMul})`;
+        ctx!.beginPath();
+        ctx!.arc(x, y, p.size, 0, Math.PI * 2);
+        ctx!.fill();
+      }
+
+      // Draw nodes
+      for (const n of nodes) {
+        const breathe = 1 + Math.sin(n.phase) * 0.15;
+        const r = n.r * breathe;
+
+        if (n.type === "ai") {
+          // Halo ring
+          ctx!.strokeStyle = `rgba(${cyanRGB}, ${(dark ? 0.1 : 0.1) * intensityMul})`;
+          ctx!.lineWidth = dark ? 1 : 1.3;
+          ctx!.beginPath();
+          ctx!.arc(n.x, n.y, r * 2.5, 0, Math.PI * 2);
+          ctx!.stroke();
+
+          // Inner glow
+          const g = ctx!.createRadialGradient(
+            n.x,
+            n.y,
+            0,
+            n.x,
+            n.y,
+            r * 1.8
+          );
+          g.addColorStop(
+            0,
+            `rgba(${cyanRGB}, ${(dark ? 0.25 : 0.22) * intensityMul})`
+          );
+          g.addColorStop(1, `rgba(${cyanRGB}, 0)`);
+          ctx!.fillStyle = g;
+          ctx!.beginPath();
+          ctx!.arc(n.x, n.y, r * 1.8, 0, Math.PI * 2);
+          ctx!.fill();
+
+          // Core
+          ctx!.fillStyle = `rgba(${cyanRGB}, ${(dark ? 0.4 : 0.35) * intensityMul})`;
+          ctx!.beginPath();
+          ctx!.arc(n.x, n.y, r, 0, Math.PI * 2);
+          ctx!.fill();
+
+          // Label
+          if (n.name) {
+            ctx!.fillStyle = labelColor;
+            ctx!.font = "500 10px DM Sans, sans-serif";
+            ctx!.textAlign = "center";
+            ctx!.fillText(n.name, n.x, n.y + r * 2.5 + 14);
+          }
+        } else if (n.type === "source") {
+          // Glow
+          const g = ctx!.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 2);
+          g.addColorStop(
+            0,
+            `rgba(${cyanRGB}, ${(dark ? 0.2 : 0.18) * intensityMul})`
+          );
+          g.addColorStop(1, `rgba(${cyanRGB}, 0)`);
+          ctx!.fillStyle = g;
+          ctx!.beginPath();
+          ctx!.arc(n.x, n.y, r * 2, 0, Math.PI * 2);
+          ctx!.fill();
+
+          // Core
+          ctx!.fillStyle = `rgba(${cyanRGB}, ${(dark ? 0.3 : 0.25) * intensityMul})`;
+          ctx!.beginPath();
+          ctx!.arc(n.x, n.y, r, 0, Math.PI * 2);
+          ctx!.fill();
+        } else {
+          // Relay — small, subtle
+          ctx!.fillStyle = `rgba(${navyRGB}, ${(dark ? 0.15 : 0.14) * intensityMul})`;
+          ctx!.beginPath();
+          ctx!.arc(n.x, n.y, r, 0, Math.PI * 2);
+          ctx!.fill();
+        }
+      }
+
+      // Periodic random pulses between nearby nodes
+      if (fc % 90 === 0) {
+        const sources = nodes.filter(
+          (n) => n.type === "source" || n.type === "relay"
+        );
+        const targets = nodes.filter(
+          (n) => n.type === "ai" || n.type === "relay"
+        );
+        if (sources.length && targets.length) {
+          const from = sources[Math.floor(Math.random() * sources.length)];
+          const to = targets[Math.floor(Math.random() * targets.length)];
+          if (
+            from !== to &&
+            Math.hypot(from.x - to.x, from.y - to.y) < 280
+          ) {
+            spawnPulse(from, to);
+          }
+        }
+      }
     };
 
     frameRef.current = requestAnimationFrame(animate);
@@ -278,21 +456,19 @@ const AuroraBackground = ({
     return () => {
       cancelAnimationFrame(frameRef.current);
       observer.disconnect();
-      renderer.dispose();
-      material.dispose();
-      quad.geometry.dispose();
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
+      if (container.contains(canvas)) {
+        container.removeChild(canvas);
       }
     };
-  }, [intensity, speed, variant, fullPage]);
+  }, [intensity, speed, fullPage, isDark]);
 
   return (
     <div
-      ref={containerRef}
       className={`${fullPage ? "fixed inset-0" : "absolute inset-0"} z-0 pointer-events-none ${className}`}
       aria-hidden="true"
-    />
+    >
+      <div ref={containerRef} className="absolute inset-0" />
+    </div>
   );
 };
 

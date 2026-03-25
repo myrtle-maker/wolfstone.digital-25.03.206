@@ -21,6 +21,14 @@
   <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0436c4c4-315e-4c45-b860-cc0a1a598e9e/id-preview-0231c024--cf20afff-9fef-4583-b5d7-86c3d5c5a88a.lovable.app-1774079767190.png">
 </head>
   <body>
+    <script>
+      (function(){
+        var t=localStorage.getItem('wd-theme');
+        if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches)){
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

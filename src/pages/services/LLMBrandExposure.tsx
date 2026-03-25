@@ -43,9 +43,9 @@ const LLMBrandExposurePage = () => (
 
     <section className="bg-wd-ice py-20 md:py-28">
       <div className="container">
-        <ScrollReveal><h2 className="text-h1 text-wd-navy mb-6">The shift from search to AI recommendations</h2></ScrollReveal>
+        <ScrollReveal><h2 className="text-h1 text-foreground mb-6">The shift from search to AI recommendations</h2></ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <p className="text-body-lg text-[#4A6080] max-ch-70 mb-6">
+          <p className="text-body-lg text-muted-foreground max-ch-70 mb-6">
             Consumers are changing how they discover brands. Instead of searching Google and clicking through results, they're asking ChatGPT "What's the best broker?", asking Gemini "Which law firm should I use?", asking Perplexity to compare products. The brands that get cited win. The brands that don't, lose market share.
           </p>
         </ScrollReveal>
@@ -56,9 +56,9 @@ const LLMBrandExposurePage = () => (
               { value: "77%", label: "Treat ChatGPT as search" },
               { value: "357%", label: "YoY AI referral traffic growth" },
             ].map((s, i) => (
-              <div key={i} className="bg-white border border-wd-navy/[0.06] rounded-[12px] p-5 text-center shadow-sm">
-                <div className="text-[clamp(1.75rem,3vw,2.5rem)] font-black leading-none text-wd-blue mb-2">{s.value}</div>
-                <div className="text-overline text-[#4A6080]">{s.label}</div>
+              <div key={i} className="bg-card border border-border rounded-[12px] p-5 text-center shadow-sm">
+                <div className="text-[clamp(1.75rem,3vw,2.5rem)] font-black leading-none text-primary mb-2">{s.value}</div>
+                <div className="text-overline text-muted-foreground">{s.label}</div>
               </div>
             ))}
           </div>

@@ -5,7 +5,90 @@
 @tailwind utilities;
 
 @layer base {
+  /* ── LIGHT THEME (default) ─────────────────────────── */
   :root {
+    --background: 220 20% 97%;
+    --foreground: 220 50% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 50% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 50% 12%;
+
+    --primary: 190 100% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 16% 93%;
+    --secondary-foreground: 220 50% 12%;
+
+    --muted: 220 16% 93%;
+    --muted-foreground: 220 20% 46%;
+
+    --accent: 190 100% 32%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 16% 88%;
+    --input: 220 16% 85%;
+    --ring: 190 100% 38%;
+
+    --radius: 0.75rem;
+
+    /* Wolfstone brand tokens — constant across themes */
+    --wd-navy: 220 50% 6%;
+    --wd-navy-mid: 220 48% 9%;
+    --wd-midnight: 222 40% 14%;
+    --wd-blue: 210 70% 36%;
+    --wd-cyan: 190 100% 45%;
+    --wd-cyan-bright: 190 100% 61%;
+    --wd-ice: 222 33% 93%;
+    --wd-white: 0 0% 100%;
+    --wd-muted-text: 220 20% 46%;
+    --wd-gold: 38 70% 50%;
+    --wd-gold-dark: 38 65% 38%;
+    --wd-cream: 220 20% 97%;
+    --wd-stone: 220 16% 93%;
+    --wd-warm-grey: 220 12% 85%;
+    --wd-navy-text: 220 50% 12%;
+
+    /* Glow tokens */
+    --wd-glow-cyan: 190 100% 45%;
+    --wd-glow-gold: 38 70% 50%;
+
+    /* Semantic surface tokens — theme-aware (light-first glass) */
+    --wd-surface-glass: 218 30% 91% / 0.35;
+    --wd-surface-glass-hover: 218 30% 91% / 0.50;
+    --wd-border-glass: 0 0% 100% / 0.65;
+    --wd-border-glass-strong: 0 0% 100% / 0.85;
+    --wd-glass-border-top: 0 0% 100% / 0.80;
+    --wd-glass-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 4px 24px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.04);
+    --wd-glass-shadow-hover: 0 1px 0 rgba(255,255,255,0.7) inset, 0 8px 32px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+    --wd-glass-shine: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.05) 40%, transparent 60%);
+    --wd-text-primary: 220 50% 12%;
+    --wd-text-secondary: 220 20% 36%;
+    --wd-text-tertiary: 220 20% 52%;
+    --wd-bg-page: 220 20% 97%;
+
+    /* Header/nav */
+    --wd-header-bg: 220 20% 97% / 0.8;
+    --wd-header-border: 220 16% 88% / 0.6;
+    --wd-dropdown-bg: 0 0% 100% / 0.92;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 50% 12%;
+    --sidebar-primary: 190 100% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 16% 93%;
+    --sidebar-accent-foreground: 220 50% 12%;
+    --sidebar-border: 220 16% 88%;
+    --sidebar-ring: 190 100% 38%;
+  }
+
+  /* ── DARK THEME ─────────────────────────── */
+  .dark {
     --background: 220 50% 6%;
     --foreground: 0 0% 96%;
 
@@ -34,30 +117,33 @@
     --input: 0 0% 100% / 0.08;
     --ring: 190 100% 45%;
 
-    --radius: 0.75rem;
-
-    /* Wolfstone custom tokens — modernized depths */
-    --wd-navy: 220 50% 6%;
-    --wd-navy-mid: 220 48% 9%;
-    --wd-midnight: 222 40% 14%;
-    --wd-blue: 210 70% 36%;
-    --wd-cyan: 190 100% 45%;
-    --wd-cyan-bright: 190 100% 61%;
-    --wd-ice: 222 33% 93%;
-    --wd-white: 0 0% 100%;
     --wd-muted-text: 210 25% 68%;
-    --wd-gold: 38 70% 50%;
-    --wd-gold-dark: 38 65% 38%;
 
-    /* Light palette — cool blue-grey tones */
-    --wd-cream: 220 20% 97%;
-    --wd-stone: 220 16% 93%;
-    --wd-warm-grey: 220 12% 85%;
-    --wd-navy-text: 220 50% 12%;
+    /* Light-section colors → dark equivalents */
+    --wd-ice: 222 40% 12%;
+    --wd-cream: 220 50% 6%;
+    --wd-stone: 220 40% 10%;
+    --wd-warm-grey: 220 20% 20%;
+    --wd-navy-text: 0 0% 96%;
 
-    /* Glow tokens */
-    --wd-glow-cyan: 190 100% 45%;
-    --wd-glow-gold: 38 70% 50%;
+    /* Semantic surfaces — dark glass */
+    --wd-surface-glass: 0 0% 100% / 0.04;
+    --wd-surface-glass-hover: 0 0% 100% / 0.08;
+    --wd-border-glass: 0 0% 100% / 0.08;
+    --wd-border-glass-strong: 0 0% 100% / 0.12;
+    --wd-glass-border-top: 0 0% 100% / 0.12;
+    --wd-glass-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+    --wd-glass-shadow-hover: 0 8px 32px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.25);
+    --wd-glass-shine: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 40%, transparent 60%);
+    --wd-text-primary: 0 0% 100%;
+    --wd-text-secondary: 0 0% 100% / 0.70;
+    --wd-text-tertiary: 0 0% 100% / 0.55;
+    --wd-bg-page: 220 50% 6%;
+
+    /* Header/nav */
+    --wd-header-bg: 220 50% 6% / 0.7;
+    --wd-header-border: 0 0% 100% / 0.05;
+    --wd-dropdown-bg: 222 40% 10% / 0.85;
 
     --sidebar-background: 220 50% 6%;
     --sidebar-foreground: 0 0% 96%;
@@ -82,6 +168,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -154,7 +241,7 @@
 .wd-glow-card {
   position: relative;
   background: hsl(var(--card));
-  border: 1px solid hsl(0 0% 100% / 0.06);
+  border: 1px solid hsl(var(--wd-border-glass));
   border-radius: 16px;
   overflow: hidden;
   transition: border-color 0.3s ease-out, box-shadow 0.3s ease-out, transform 0.3s ease-out;
@@ -174,10 +261,18 @@
 .wd-glow-card:hover {
   border-color: hsl(var(--primary) / 0.2);
   transform: translateY(-2px);
+}
+.dark .wd-glow-card:hover {
   box-shadow:
     0 0 0 1px hsl(var(--primary) / 0.05),
     0 4px 12px hsl(0 0% 0% / 0.3),
     0 16px 40px hsl(0 0% 0% / 0.2);
+}
+:root:not(.dark) .wd-glow-card:hover {
+  box-shadow:
+    0 0 0 1px hsl(var(--primary) / 0.08),
+    0 4px 12px hsl(220 50% 6% / 0.06),
+    0 16px 40px hsl(220 50% 6% / 0.04);
 }
 .wd-glow-card:hover::before {
   opacity: 1.4;
@@ -192,12 +287,23 @@
   );
 }
 
-/* Glassmorphism surface */
+/* Glassmorphism surface — theme-aware with liquid glass treatment */
 .wd-glass {
-  background: hsl(var(--wd-navy) / 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid hsl(0 0% 100% / 0.05);
+  background: hsl(var(--wd-surface-glass));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsl(var(--wd-border-glass));
+  border-top: 1px solid hsl(var(--wd-glass-border-top));
+  box-shadow: var(--wd-glass-shadow);
+  position: relative;
+}
+.wd-glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--wd-glass-shine);
+  pointer-events: none;
 }
 
 /* Progressive layered shadow */
@@ -211,7 +317,7 @@
     0 24px 24px -12px hsl(0 0% 0% / 0.06);
 }
 
-/* Section gradient transitions — replaces hard background cuts */
+/* Section gradient transitions — theme-aware */
 .wd-section-fade-down {
   position: relative;
 }
@@ -222,7 +328,7 @@
   left: 0;
   right: 0;
   height: 120px;
-  background: linear-gradient(to bottom, transparent, hsl(var(--wd-navy)));
+  background: linear-gradient(to bottom, transparent, hsl(var(--wd-bg-page)));
   pointer-events: none;
 }
 
@@ -236,7 +342,7 @@
   left: 0;
   right: 0;
   height: 120px;
-  background: linear-gradient(to top, transparent, hsl(var(--wd-navy)));
+  background: linear-gradient(to top, transparent, hsl(var(--wd-bg-page)));
   pointer-events: none;
   z-index: 1;
 }
@@ -249,7 +355,7 @@
   left: 0;
   right: 0;
   height: 80px;
-  background: linear-gradient(to bottom, transparent, hsl(var(--wd-navy)));
+  background: linear-gradient(to bottom, transparent, hsl(var(--wd-bg-page)));
   pointer-events: none;
 }
 
@@ -261,14 +367,14 @@
   left: 0;
   right: 0;
   height: 80px;
-  background: linear-gradient(to bottom, transparent, hsl(var(--wd-cream)));
+  background: linear-gradient(to bottom, transparent, hsl(var(--wd-bg-page)));
   pointer-events: none;
 }
 
 /* Light card on light backgrounds — modernized */
 .wd-card-light {
-  background: white;
-  border: 1px solid hsl(var(--wd-warm-grey) / 0.5);
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
   border-radius: 16px;
   transition: border-color 0.3s ease-out, box-shadow 0.3s ease-out, transform 0.3s ease-out;
 }
@@ -302,12 +408,17 @@
   pointer-events: none;
 }
 
-/* Subtle cross-hatch texture for light sections */
+/* Subtle cross-hatch texture — theme-aware */
 .wd-texture {
-  background-image: 
+  background-image:
     linear-gradient(hsl(216 20% 88% / 0.25) 1px, transparent 1px),
     linear-gradient(90deg, hsl(216 20% 88% / 0.25) 1px, transparent 1px);
   background-size: 32px 32px;
+}
+.dark .wd-texture {
+  background-image:
+    linear-gradient(hsl(0 0% 100% / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(0 0% 100% / 0.03) 1px, transparent 1px);
 }
 
 /* Ken Burns effect for city videos */
@@ -341,4 +452,18 @@
   color: hsl(var(--primary));
   font-weight: 700;
   animation: brand-pulse 2.4s ease-in-out infinite;
+}
+
+/* Theme transition smoothing */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0s;
+}
+body,
+.wd-glow-card,
+.wd-glass,
+.wd-card-light,
+header {
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }

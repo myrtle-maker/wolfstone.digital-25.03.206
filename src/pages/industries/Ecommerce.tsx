@@ -45,12 +45,12 @@ const EcommercePage = () => (
 
     <section className="bg-wd-ice py-20 md:py-28">
       <div className="container">
-        <ScrollReveal><h2 className="text-h1 text-wd-navy mb-6">The ecommerce AI opportunity</h2></ScrollReveal>
+        <ScrollReveal><h2 className="text-h1 text-foreground mb-6">The ecommerce AI opportunity</h2></ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <p className="text-body-lg text-[#4A6080] max-ch-70 mb-6">
+          <p className="text-body-lg text-muted-foreground max-ch-70 mb-6">
             Product recommendation queries are among the fastest-growing AI use cases. Consumers are asking LLMs to compare products, suggest alternatives, and validate purchases. The brands that appear in these AI-generated answers capture demand at the highest-intent moment — the point of decision.
           </p>
-          <p className="text-body text-[#4A6080] max-ch-70">
+          <p className="text-body text-muted-foreground max-ch-70">
             Our <Link to="/services/llm-brand-exposure/" className="text-wd-blue font-bold hover:underline">LLM brand exposure methodology</Link> — proven by making our own finance brand the most AI-cited independent source amongst our competitors — applies directly to ecommerce product visibility.
           </p>
         </ScrollReveal>

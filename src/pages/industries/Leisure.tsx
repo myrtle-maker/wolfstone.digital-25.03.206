@@ -45,10 +45,10 @@ const LeisurePage = () => (
 
     <section className="bg-wd-ice py-20 md:py-28">
       <div className="container">
-        <ScrollReveal><h2 className="text-h1 text-wd-navy mb-6">AI is reshaping leisure discovery</h2></ScrollReveal>
+        <ScrollReveal><h2 className="text-h1 text-foreground mb-6">AI is reshaping leisure discovery</h2></ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <p className="text-body-lg text-[#4A6080] max-ch-70 mb-6">"What are the best restaurants in Edinburgh?" "Recommend a spa hotel in the Cotswolds." "Where should I go for a stag do in the UK?" — these are real queries consumers ask AI every day. The brands that appear in AI-generated answers capture demand at the highest-intent moment.</p>
-          <p className="text-body text-[#4A6080] max-ch-70">Our <Link to="/services/llm-brand-exposure/" className="text-wd-blue font-bold hover:underline">LLM brand exposure methodology</Link> gets leisure brands into these conversations.</p>
+          <p className="text-body-lg text-muted-foreground max-ch-70 mb-6">"What are the best restaurants in Edinburgh?" "Recommend a spa hotel in the Cotswolds." "Where should I go for a stag do in the UK?" — these are real queries consumers ask AI every day. The brands that appear in AI-generated answers capture demand at the highest-intent moment.</p>
+          <p className="text-body text-muted-foreground max-ch-70">Our <Link to="/services/llm-brand-exposure/" className="text-wd-blue font-bold hover:underline">LLM brand exposure methodology</Link> gets leisure brands into these conversations.</p>
         </ScrollReveal>
       </div>
     </section>

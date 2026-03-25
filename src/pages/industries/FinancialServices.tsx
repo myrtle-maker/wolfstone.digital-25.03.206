@@ -54,17 +54,17 @@ const FinancialServicesPage = () => (
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
-            <ScrollReveal><h2 className="text-h1 text-wd-navy mb-6">The challenge of marketing in financial services</h2></ScrollReveal>
+            <ScrollReveal><h2 className="text-h1 text-foreground mb-6">The challenge of marketing in financial services</h2></ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <p className="text-body text-[#4A6080] mb-4">Financial services is one of the hardest sectors to market in. FCA regulations constrain messaging. Advertising standards limit creative freedom. Compliance teams slow execution. Big spenders dominate paid channels.</p>
-              <p className="text-body text-[#4A6080]">The brands that win in finance are the ones that build organic authority — through SEO, content, and now AI visibility. That's where we come in.</p>
+              <p className="text-body text-muted-foreground mb-4">Financial services is one of the hardest sectors to market in. FCA regulations constrain messaging. Advertising standards limit creative freedom. Compliance teams slow execution. Big spenders dominate paid channels.</p>
+              <p className="text-body text-muted-foreground">The brands that win in finance are the ones that build organic authority — through SEO, content, and now AI visibility. That's where we come in.</p>
             </ScrollReveal>
           </div>
           <div>
-            <ScrollReveal delay={0.15}><h2 className="text-h1 text-wd-navy mb-6">Why generic providers fail in finance</h2></ScrollReveal>
+            <ScrollReveal delay={0.15}><h2 className="text-h1 text-foreground mb-6">Why generic providers fail in finance</h2></ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <p className="text-body text-[#4A6080] mb-4">Generic marketing providers don't understand compliance. They don't know what FCA regulations mean for content. They don't understand risk warnings, financial promotions rules, or the nuances of broker marketing.</p>
-              <p className="text-body text-[#4A6080] font-bold">We do — because we've operated in the space, not just advised on it.</p>
+              <p className="text-body text-muted-foreground mb-4">Generic marketing providers don't understand compliance. They don't know what FCA regulations mean for content. They don't understand risk warnings, financial promotions rules, or the nuances of broker marketing.</p>
+              <p className="text-body text-muted-foreground font-bold">We do — because we've operated in the space, not just advised on it.</p>
             </ScrollReveal>
           </div>
         </div>

@@ -41,9 +41,9 @@ const GEOPage = () => (
       <div className="container">
         <Breadcrumbs items={[{ label: "Services", path: "/services" }, { label: "GEO" }]} />
         <ScrollReveal><span className="text-overline text-primary mb-4 block">GEO services</span></ScrollReveal>
-        <ScrollReveal delay={0.1}><h1 className="text-display max-w-[20ch] mb-6 text-white">Generative engine optimisation that gets your brand cited by AI</h1></ScrollReveal>
+        <ScrollReveal delay={0.1}><h1 className="text-display max-w-[20ch] mb-6 text-foreground">Generative engine optimisation that gets your brand cited by AI</h1></ScrollReveal>
         <ScrollReveal delay={0.2}>
-          <p className="text-body-lg text-white/80 max-w-[70ch]">
+          <p className="text-body-lg text-muted-foreground max-w-[70ch]">
             Generative engine optimisation (GEO) is the practice of getting your brand cited, recommended, and referenced by AI platforms. Most brands are invisible to ChatGPT, Gemini, Perplexity, Copilot, and Claude. We built the most AI-cited independent finance source on the internet — competing against brands with 100x our budget. We know exactly what it takes — because we've done it ourselves.
           </p>
         </ScrollReveal>
@@ -52,15 +52,15 @@ const GEOPage = () => (
 
     <section className="bg-wd-ice py-20 md:py-28">
       <div className="container">
-        <ScrollReveal><h2 className="text-h1 text-wd-navy mb-6">What is generative engine optimisation?</h2></ScrollReveal>
+        <ScrollReveal><h2 className="text-h1 text-foreground mb-6">What is generative engine optimisation?</h2></ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <p className="text-body-lg text-[#4A6080] max-ch-70 mb-8">
-            GEO is the discipline of structuring content, building entity authority, and optimising for AI crawlers so that large language models cite and recommend your brand. It's fundamentally different from <Link to="/services/seo/" className="text-wd-blue font-bold hover:underline">traditional SEO</Link> — though the two work best together.
+          <p className="text-body-lg text-muted-foreground max-ch-70 mb-8">
+            GEO is the discipline of structuring content, building entity authority, and optimising for AI crawlers so that large language models cite and recommend your brand. It's fundamentally different from <Link to="/services/seo/" className="text-primary font-bold hover:underline">traditional SEO</Link> — though the two work best together.
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
           <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-[12px] border border-wd-navy/[0.06] shadow-sm overflow-hidden">
+            <table className="w-full bg-card rounded-[12px] border border-border shadow-sm overflow-hidden">
               <thead>
                 <tr className="bg-wd-navy text-white">
                   <th className="text-left p-4 text-overline">Aspect</th>
@@ -70,10 +70,10 @@ const GEOPage = () => (
               </thead>
               <tbody>
                 {comparisonRows.map((row, i) => (
-                  <tr key={i} className="border-t border-wd-navy/[0.06]">
-                    <td className="p-4 text-body-sm font-bold text-wd-navy">{row.aspect}</td>
-                    <td className="p-4 text-body-sm text-[#4A6080]">{row.seo}</td>
-                    <td className="p-4 text-body-sm text-[#4A6080]">{row.geo}</td>
+                  <tr key={i} className="border-t border-border">
+                    <td className="p-4 text-body-sm font-bold text-foreground">{row.aspect}</td>
+                    <td className="p-4 text-body-sm text-muted-foreground">{row.seo}</td>
+                    <td className="p-4 text-body-sm text-muted-foreground">{row.geo}</td>
                   </tr>
                 ))}
               </tbody>

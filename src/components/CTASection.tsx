@@ -17,12 +17,12 @@ const CTASection = ({
 }: CTASectionProps) => (
   <section className="relative py-20 md:py-28">
     <div className="container relative z-10">
-      <div className="rounded-[20px] bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] py-16 px-8 text-center">
+      <div className="rounded-[20px] wd-glass py-16 px-8 text-center">
       <ScrollReveal>
-        <h2 className="text-h1 mb-6 max-w-[30ch] mx-auto text-white">{heading}</h2>
+        <h2 className="text-h1 mb-6 max-w-[30ch] mx-auto text-foreground">{heading}</h2>
       </ScrollReveal>
       <ScrollReveal delay={0.1}>
-        <p className="text-body-lg text-white/80 max-ch-70 mx-auto mb-10">{body}</p>
+        <p className="text-body-lg text-muted-foreground max-ch-70 mx-auto mb-10">{body}</p>
       </ScrollReveal>
       <ScrollReveal delay={0.2}>
         <div className="flex flex-wrap justify-center gap-4">

@@ -3,23 +3,23 @@ import wolfstoneLogoWhite from "@/assets/wolfstone-logo-white.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-wd-navy relative border-t border-white/[0.05]">
+    <footer className="bg-[hsl(220_50%_6%)] relative border-t border-[hsl(0_0%_100%/0.05)]">
       <div className="container py-16">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           <div className="col-span-2 lg:col-span-2">
             <Link to="/" className="inline-block mb-4">
               <img src={wolfstoneLogoWhite} alt="Wolfstone Digital" className="h-12 w-auto" />
             </Link>
-            <p className="text-wd-muted text-body-sm max-ch-70 mb-4">
+            <p className="text-[hsl(210_25%_68%)] text-body-sm max-ch-70 mb-4">
               Results-driven AI SEO and GEO consultancy built by operators. LLM brand exposure, digital PR & technical SEO for enterprise brands.
             </p>
-            <Link to="/tools/ai-visibility-checker" className="text-primary hover:text-accent transition-colors text-body-sm font-bold">
+            <Link to="/tools/ai-visibility-checker" className="text-[hsl(190_100%_45%)] hover:text-[hsl(190_100%_61%)] transition-colors text-body-sm font-bold">
               Get a free AI visibility audit →
             </Link>
           </div>
 
           <div>
-            <h4 className="text-overline text-primary mb-4">Services</h4>
+            <h4 className="text-overline text-[hsl(190_100%_45%)] mb-4">Services</h4>
             <nav className="flex flex-col gap-2.5">
               {[
                 { label: "SEO", path: "/services/seo" },
@@ -30,7 +30,7 @@ const Footer = () => {
                 { label: "Content", path: "/services/content" },
                 { label: "Social media", path: "/services/social-media" },
               ].map((link) => (
-                <Link key={link.path} to={link.path} className="text-body-sm text-wd-muted hover:text-primary transition-colors">
+                <Link key={link.path} to={link.path} className="text-body-sm text-[hsl(210_25%_68%)] hover:text-[hsl(190_100%_45%)] transition-colors">
                   {link.label}
                 </Link>
               ))}
@@ -38,7 +38,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-overline text-primary mb-4">Industries</h4>
+            <h4 className="text-overline text-[hsl(190_100%_45%)] mb-4">Industries</h4>
             <nav className="flex flex-col gap-2.5">
               {[
                 { label: "Financial services", path: "/industries/financial-services" },
@@ -46,7 +46,7 @@ const Footer = () => {
                 { label: "Ecommerce", path: "/industries/ecommerce" },
                 { label: "Leisure", path: "/industries/leisure" },
               ].map((link) => (
-                <Link key={link.path} to={link.path} className="text-body-sm text-wd-muted hover:text-primary transition-colors">
+                <Link key={link.path} to={link.path} className="text-body-sm text-[hsl(210_25%_68%)] hover:text-[hsl(190_100%_45%)] transition-colors">
                   {link.label}
                 </Link>
               ))}
@@ -54,7 +54,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-overline text-primary mb-4">Company</h4>
+            <h4 className="text-overline text-[hsl(190_100%_45%)] mb-4">Company</h4>
             <nav className="flex flex-col gap-2.5">
               {[
                 { label: "About", path: "/about" },
@@ -62,7 +62,7 @@ const Footer = () => {
                 { label: "Contact", path: "/contact" },
                 { label: "Free tools", path: "/tools" },
               ].map((link) => (
-                <Link key={link.path} to={link.path} className="text-body-sm text-wd-muted hover:text-primary transition-colors">
+                <Link key={link.path} to={link.path} className="text-body-sm text-[hsl(210_25%_68%)] hover:text-[hsl(190_100%_45%)] transition-colors">
                   {link.label}
                 </Link>
               ))}
@@ -72,10 +72,10 @@ const Footer = () => {
 
         <div className="mt-12 mb-6 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--wd-gold))]/30 to-transparent" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-caption text-wd-muted">
+          <p className="text-caption text-[hsl(210_25%_68%)]">
             © {new Date().getFullYear()} Wolfstone Digital. All rights reserved.
           </p>
-          <p className="text-caption text-wd-muted">
+          <p className="text-caption text-[hsl(210_25%_68%)]">
             AI SEO & GEO consultancy — built by operators, not theorists.
           </p>
         </div>

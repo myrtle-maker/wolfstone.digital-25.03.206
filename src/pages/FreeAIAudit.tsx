@@ -56,7 +56,7 @@ const FreeAIAudit = () => {
     } catch { toast.error("Analysis failed. Please try again."); } finally { setLoading(false); }
   };
 
-  const inputClass = "w-full border border-wd-navy/10 rounded-md px-4 py-3 text-wd-navy placeholder:text-[#4A6080]/50 focus:outline-none focus:border-wd-blue/40 focus:ring-1 focus:ring-wd-blue/20 transition-colors text-body bg-white";
+  const inputClass = "w-full border border-border rounded-md px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-colors text-body bg-card";
 
   return (
     <main className="pt-20">
@@ -78,7 +78,7 @@ const FreeAIAudit = () => {
         <div className="container">
           {!result && !loading && (
             <ScrollReveal>
-              <form onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-white rounded-[16px] p-8 shadow-xl shadow-wd-navy/5 border border-wd-navy/[0.06]">
+              <form onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-card rounded-[16px] p-8 shadow-xl shadow-lg border border-border">
                 <h2 className="text-h2 text-wd-navy mb-6 text-center">Get your free AI visibility report</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div><label className="text-overline text-[#4A6080] block mb-2">Your name *</label><input type="text" className={inputClass} placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} maxLength={100} required /></div>

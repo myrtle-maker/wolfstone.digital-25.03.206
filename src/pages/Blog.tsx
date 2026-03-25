@@ -40,17 +40,17 @@ const BlogHub = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post, i) => (
             <ScrollReveal key={post.slug} delay={i * 0.07}>
-              <div className="bg-white border border-wd-navy/[0.06] rounded-[12px] p-6 hover:border-wd-blue/30 transition-colors duration-200 h-full shadow-sm flex flex-col">
-                <span className="text-overline text-wd-blue mb-3 block">Article</span>
-                <h2 className="text-h3 text-wd-navy mb-3">{post.title}</h2>
-                <p className="text-body-sm text-[#4A6080] flex-1 mb-4">{post.desc}</p>
-                <span className="text-body-sm text-wd-blue font-bold inline-flex items-center gap-1">Coming soon <ArrowRight size={14} /></span>
+              <div className="bg-card border border-border rounded-[12px] p-6 hover:border-primary/30 transition-colors duration-200 h-full shadow-sm flex flex-col">
+                <span className="text-overline text-primary mb-3 block">Article</span>
+                <h2 className="text-h3 text-foreground mb-3">{post.title}</h2>
+                <p className="text-body-sm text-muted-foreground flex-1 mb-4">{post.desc}</p>
+                <span className="text-body-sm text-primary font-bold inline-flex items-center gap-1">Coming soon <ArrowRight size={14} /></span>
               </div>
             </ScrollReveal>
           ))}
         </div>
         <ScrollReveal delay={0.3}>
-          <p className="text-center text-body text-[#4A6080] mt-12">Blog posts are being published regularly. <Link to="/tools/ai-visibility-checker" className="text-wd-blue font-bold hover:underline">Get a free AI audit</Link> while you wait.</p>
+          <p className="text-center text-body text-muted-foreground mt-12">Blog posts are being published regularly. <Link to="/tools/ai-visibility-checker" className="text-primary font-bold hover:underline">Get a free AI audit</Link> while you wait.</p>
         </ScrollReveal>
       </div>
     </section>

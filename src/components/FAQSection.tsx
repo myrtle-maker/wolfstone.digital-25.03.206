@@ -9,10 +9,10 @@ interface FAQ {
 const FAQSection = ({ faqs }: { faqs: FAQ[] }) => (
   <section className="relative py-20 md:py-28">
     <div className="container relative z-10">
-      <div className="rounded-[20px] bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] px-8 py-14 md:px-12 md:py-16">
+      <div className="rounded-[20px] wd-glass px-8 py-14 md:px-12 md:py-16">
         <ScrollReveal>
           <span className="text-overline text-primary mb-4 block">FAQ</span>
-          <h2 className="text-h1 mb-10 text-white">Frequently asked questions</h2>
+          <h2 className="text-h1 mb-10 text-foreground">Frequently asked questions</h2>
         </ScrollReveal>
         <div className="max-w-3xl">
           <Accordion type="single" collapsible className="space-y-3">
@@ -20,12 +20,12 @@ const FAQSection = ({ faqs }: { faqs: FAQ[] }) => (
               <ScrollReveal key={i} delay={i * 0.06}>
                 <AccordionItem
                   value={`faq-${i}`}
-                  className="bg-white/[0.05] border border-white/[0.08] data-[state=open]:border-l-primary data-[state=open]:border-l-2 rounded-[16px] px-6 transition-all duration-300"
+                  className="wd-glass data-[state=open]:border-l-primary data-[state=open]:border-l-2 rounded-[16px] px-6 transition-all duration-300"
                 >
-                  <AccordionTrigger className="text-left text-h3 hover:no-underline py-5 font-bold text-white">
+                  <AccordionTrigger className="text-left text-h3 hover:no-underline py-5 font-bold text-foreground">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-body pb-5 text-white/75">
+                  <AccordionContent className="text-body pb-5 text-muted-foreground">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

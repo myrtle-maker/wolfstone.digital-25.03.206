@@ -44,20 +44,20 @@ const DigitalPRPage = () => (
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
-            <ScrollReveal><h2 className="text-h1 text-wd-navy mb-6">PR campaigns that deliver measurable results</h2></ScrollReveal>
+            <ScrollReveal><h2 className="text-h1 text-foreground mb-6">PR campaigns that deliver measurable results</h2></ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <p className="text-body text-[#4A6080] mb-4">Every PR campaign we run is designed to achieve three things: build brand authority, generate high-quality backlinks, and increase your AI citation rate. We don't do vanity coverage — every placement must drive commercial value.</p>
-              <p className="text-body text-[#4A6080]">We have the ability to scale rapidly — building dedicated teams for client campaigns without compromising on sector expertise or compliance awareness.</p>
+              <p className="text-body text-muted-foreground mb-4">Every PR campaign we run is designed to achieve three things: build brand authority, generate high-quality backlinks, and increase your AI citation rate. We don't do vanity coverage — every placement must drive commercial value.</p>
+              <p className="text-body text-muted-foreground">We have the ability to scale rapidly — building dedicated teams for client campaigns without compromising on sector expertise or compliance awareness.</p>
             </ScrollReveal>
           </div>
           <div>
-            <ScrollReveal delay={0.15}><h2 className="text-h1 text-wd-navy mb-6">What we deliver</h2></ScrollReveal>
+            <ScrollReveal delay={0.15}><h2 className="text-h1 text-foreground mb-6">What we deliver</h2></ScrollReveal>
             <ScrollReveal delay={0.2}>
               <div className="space-y-4">
                 {["Earned media campaigns in tier 1 and sector-specific publications", "Brand authority building through thought leadership and expert commentary", "High-authority link acquisition through genuine editorial coverage", "Scalable PR — dedicated teams built rapidly", "Compliance-aware campaigns for regulated industries"].map((item, i) => (
                   <div key={i} className="flex gap-3 items-start">
-                    <ArrowRight className="w-4 h-4 text-wd-blue mt-1 shrink-0" />
-                    <p className="text-body text-[#4A6080]">{item}</p>
+                    <ArrowRight className="w-4 h-4 text-primary mt-1 shrink-0" />
+                    <p className="text-body text-muted-foreground">{item}</p>
                   </div>
                 ))}
               </div>

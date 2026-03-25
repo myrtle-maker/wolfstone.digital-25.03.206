@@ -38,6 +38,7 @@ import PortalAuth from "./pages/PortalAuth";
 import Portal from "./pages/Portal";
 import { useEffect } from "react";
 import { useLocation, Navigate } from "react-router-dom";
+import { ThemeProvider } from "@/hooks/useTheme";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const ScrollToTop = () => {
 };
 
 const App = () => (
+  <ThemeProvider defaultTheme="light">
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -96,6 +98,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
+  </ThemeProvider>
 );
 
 export default App;

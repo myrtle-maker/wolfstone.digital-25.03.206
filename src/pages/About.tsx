@@ -68,19 +68,19 @@ const About = () => {
             <span className="text-overline text-primary mb-4 block">About us</span>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h1 className="text-display max-w-[16ch] mb-8 text-white">
+            <h1 className="text-display max-w-[16ch] mb-8 text-foreground">
               Built by <span className="wd-gradient-text">operators.</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <div className="max-w-3xl space-y-6">
-              <p className="text-body-lg text-white/85">
+              <p className="text-body-lg text-muted-foreground">
                 Wolfstone Digital is a results-driven consultancy founded by professionals with deep roots in financial services and regulated industries. We don't just advise — we founded and operate our own international finance brand, competing daily in one of the most saturated, compliance-heavy markets on the internet.
               </p>
-              <p className="text-body-lg text-white/85">
+              <p className="text-body-lg text-muted-foreground">
                 Our finance brand is the most AI-cited independent source amongst our competitors across every major AI platform — ahead of the biggest names in global finance. We know what it takes because we do it ourselves, every day, in one of the hardest markets there is.
               </p>
-              <p className="text-body-lg text-white/85">
+              <p className="text-body-lg text-muted-foreground">
                 Our background in navigating FCA compliance, advertising standards, and regulated marketing is what sets us apart from agencies who learn these constraints on your budget.
               </p>
             </div>
@@ -89,28 +89,28 @@ const About = () => {
       </section>
 
       {/* Team — narrative lead then supporting bios */}
-      <section className="bg-[hsl(var(--wd-cream))] wd-texture py-20 md:py-28">
+      <section className="bg-background wd-texture py-20 md:py-28">
         <div className="container">
           <ScrollReveal>
-            <span className="text-overline text-[hsl(var(--wd-blue))] mb-4 block">The team</span>
-            <h2 className="text-h1 text-[hsl(var(--wd-navy-text))] mb-6">The people behind the results.</h2>
-            <p className="text-body-lg text-[hsl(var(--wd-navy-text))]/70 max-w-[65ch] mb-12">
+            <span className="text-overline text-primary mb-4 block">The team</span>
+            <h2 className="text-h1 text-foreground mb-6">The people behind the results.</h2>
+            <p className="text-body-lg text-muted-foreground max-w-[65ch] mb-12">
               Four financial services professionals who built, funded, and proved an AI search methodology before selling it. Each brings a distinct capability — together we cover every surface area that matters in modern digital marketing.
             </p>
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((person, i) => (
               <ScrollReveal key={person.name + i} delay={i * 0.08}>
-                <div className="bg-[hsl(var(--wd-stone))] border border-[hsl(var(--wd-warm-grey))]/60 rounded-[12px] overflow-hidden h-full flex flex-col">
+                <div className="bg-muted border border-border rounded-[12px] overflow-hidden h-full flex flex-col">
                   <div className="aspect-[4/5] overflow-hidden">
                     <img src={person.image} alt={`${person.name} — ${person.role}`} loading="lazy" className="w-full h-full object-cover object-top" />
                   </div>
                   <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-1">{person.name}</h3>
-                    <p className="text-overline text-[hsl(var(--wd-blue))] mb-3">{person.role}</p>
-                    <p className="text-body-sm text-[hsl(var(--wd-navy-text))]/55 mb-4 flex-1">{person.bio}</p>
+                    <h3 className="text-h3 text-foreground mb-1">{person.name}</h3>
+                    <p className="text-overline text-primary mb-3">{person.role}</p>
+                    <p className="text-body-sm text-muted-foreground mb-4 flex-1">{person.bio}</p>
                     {person.linkedin && (
-                      <a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`View ${person.name}'s LinkedIn profile`} className="inline-flex items-center gap-1.5 text-[hsl(var(--wd-blue))] text-body-sm font-bold hover:underline">
+                      <a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`View ${person.name}'s LinkedIn profile`} className="inline-flex items-center gap-1.5 text-primary text-body-sm font-bold hover:underline">
                         <Linkedin size={16} aria-hidden="true" /> LinkedIn
                       </a>
                     )}
@@ -123,20 +123,20 @@ const About = () => {
       </section>
 
       {/* DNA */}
-      <section className="bg-[hsl(var(--wd-stone))] py-20 md:py-28">
+      <section className="bg-muted py-20 md:py-28">
         <div className="container">
           <ScrollReveal>
-            <span className="text-overline text-[hsl(var(--wd-blue))] mb-4 block">Our DNA</span>
-            <h2 className="text-h1 text-[hsl(var(--wd-navy-text))] mb-12">What drives us.</h2>
+            <span className="text-overline text-primary mb-4 block">Our DNA</span>
+            <h2 className="text-h1 text-foreground mb-12">What drives us.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {dna.map((item, i) => (
               <ScrollReveal key={item.title} delay={i * 0.08}>
-                <div className="bg-white border border-[hsl(var(--wd-warm-grey))]/60 rounded-[12px] p-8 hover:shadow-md hover:border-[hsl(var(--wd-blue))]/30 transition-all duration-200 h-full flex gap-5 items-start">
-                  <item.icon className="w-8 h-8 text-[hsl(var(--wd-blue))] shrink-0" />
+                <div className="bg-card border border-border rounded-[12px] p-8 hover:shadow-md hover:border-[hsl(var(--wd-blue))]/30 transition-all duration-200 h-full flex gap-5 items-start">
+                  <item.icon className="w-8 h-8 text-primary shrink-0" />
                   <div>
-                    <h3 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-2">{item.title}</h3>
-                    <p className="text-body text-[hsl(var(--wd-navy-text))]/70">{item.desc}</p>
+                    <h3 className="text-h3 text-foreground mb-2">{item.title}</h3>
+                    <p className="text-body text-muted-foreground">{item.desc}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -146,18 +146,18 @@ const About = () => {
       </section>
 
       {/* Capabilities */}
-      <section className="bg-[hsl(var(--wd-cream))] wd-texture py-20 md:py-28">
+      <section className="bg-background wd-texture py-20 md:py-28">
         <div className="container">
           <ScrollReveal>
-            <span className="text-overline text-[hsl(var(--wd-blue))] mb-4 block">Resources & capabilities</span>
-            <h2 className="text-h1 text-[hsl(var(--wd-navy-text))] mb-12">The engine behind results.</h2>
+            <span className="text-overline text-primary mb-4 block">Resources & capabilities</span>
+            <h2 className="text-h1 text-foreground mb-12">The engine behind results.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {capabilities.map((c, i) => (
               <ScrollReveal key={c.title} delay={i * 0.08}>
                 <div className="border-l-2 border-[hsl(var(--wd-blue))]/30 pl-6 py-2">
-                  <h3 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-2">{c.title}</h3>
-                  <p className="text-body-sm text-[hsl(var(--wd-navy-text))]/70">{c.desc}</p>
+                  <h3 className="text-h3 text-foreground mb-2">{c.title}</h3>
+                  <p className="text-body-sm text-muted-foreground">{c.desc}</p>
                 </div>
               </ScrollReveal>
             ))}

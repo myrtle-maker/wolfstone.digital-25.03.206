@@ -118,8 +118,8 @@ const Index = () => {
         jsonLd={jsonLd}
       />
 
-      {/* ═══════ FULL-PAGE NEURAL NETWORK BACKGROUND ═══════ */}
-      <AuroraBackground intensity={0.45} speed={0.5} variant="mixed" fullPage />
+      {/* ═══════ FULL-PAGE CITATION FLOW NETWORK ═══════ */}
+      <AuroraBackground intensity={0.6} speed={0.5} fullPage />
 
       {/* ═══════ HERO ═══════ */}
       <section className="relative pt-20">
@@ -127,26 +127,26 @@ const Index = () => {
         <div className="container relative z-10 grid min-h-[88vh] items-center gap-8 py-16 md:py-28 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1fr)] lg:gap-6 xl:gap-10">
           <div className="max-w-[40rem]">
             <span className="text-overline text-primary mb-4 md:mb-6 block">AI SEO & GEO — built by operators</span>
-            <h1 className="text-[clamp(1.75rem,4vw,3.5rem)] font-black leading-[1.08] tracking-[-0.03em] max-w-[20ch] mb-6 md:mb-8 text-white">
+            <h1 className="text-[clamp(1.75rem,4vw,3.5rem)] font-black leading-[1.08] tracking-[-0.03em] max-w-[20ch] mb-6 md:mb-8 text-foreground">
               We don't advise on AI visibility.<br />
               We <span className="wd-gradient-text">dominate it.</span>
             </h1>
 
-            <p className="text-body md:text-body-lg text-white/70 max-w-[34rem] mb-8 md:mb-12 leading-relaxed" style={{ textShadow: '0 1px 8px hsl(220 50% 6% / 0.9), 0 0 20px hsl(220 50% 6% / 0.7)' }}>
+            <p className="text-body md:text-body-lg text-muted-foreground max-w-[34rem] mb-8 md:mb-12 leading-relaxed">
               We come from financial services — one of the most regulated, competitive sectors online. We founded and operate our own international finance brand, now the most AI-cited independent source amongst our competitors across ChatGPT, Gemini, Perplexity, Copilot, and Claude. That deep industry expertise gave us an unfair advantage in understanding what makes content genuinely authoritative. Now we deploy the same methodology for select partners.
             </p>
 
             <form onSubmit={handleHeroSubmit} className="max-w-xl mb-8 md:mb-10">
               <div className="flex flex-col sm:flex-row gap-3 mb-3">
-                <input type="text" value={heroBrand} onChange={(e) => setHeroBrand(e.target.value)} placeholder="Enter your brand name" className="flex-1 rounded-[12px] bg-white/[0.04] backdrop-blur-md border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all" required />
-                <input type="text" value={heroWebsite} onChange={(e) => setHeroWebsite(e.target.value)} placeholder="Website (optional)" className="sm:w-44 rounded-[12px] bg-white/[0.04] backdrop-blur-md border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all" />
+                <input type="text" value={heroBrand} onChange={(e) => setHeroBrand(e.target.value)} placeholder="Enter your brand name" className="flex-1 rounded-[12px] bg-[hsl(var(--wd-surface-glass))] backdrop-blur-md border border-[hsl(var(--wd-border-glass))] border-t-[hsl(var(--wd-glass-border-top))] text-foreground placeholder:text-muted-foreground px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all" required />
+                <input type="text" value={heroWebsite} onChange={(e) => setHeroWebsite(e.target.value)} placeholder="Website (optional)" className="sm:w-44 rounded-[12px] bg-[hsl(var(--wd-surface-glass))] backdrop-blur-md border border-[hsl(var(--wd-border-glass))] border-t-[hsl(var(--wd-glass-border-top))] text-foreground placeholder:text-muted-foreground px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all" />
               </div>
               <div className="relative mb-3">
                 <textarea
                   value={heroPrompt}
                   onChange={(e) => setHeroPrompt(e.target.value)}
                   placeholder='Test a prompt, e.g. "What are the best investment platforms in the UK?"'
-                  className="w-full rounded-[12px] bg-white/[0.04] backdrop-blur-md border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all resize-none min-h-[52px]"
+                  className="w-full rounded-[12px] bg-[hsl(var(--wd-surface-glass))] backdrop-blur-md border border-[hsl(var(--wd-border-glass))] border-t-[hsl(var(--wd-glass-border-top))] text-foreground placeholder:text-muted-foreground px-5 py-3 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all resize-none min-h-[52px]"
                   maxLength={500}
                   rows={1}
                 />
@@ -155,20 +155,20 @@ const Index = () => {
                 <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-primary text-primary-foreground text-[13px] font-bold tracking-[0.05em] uppercase px-6 py-3.5 hover:bg-accent hover:shadow-glow-cyan transition-all duration-300 active:scale-[0.97] whitespace-nowrap">
                   {heroPrompt.trim() ? "Test prompt" : "Check AI visibility"} <ArrowRight size={16} />
                 </button>
-                <Link to="/contact" className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-white/[0.12] text-white text-[13px] font-bold tracking-[0.05em] uppercase px-6 py-3.5 hover:border-primary/40 hover:text-primary transition-all duration-300 active:scale-[0.97] whitespace-nowrap">
+                <Link to="/contact" className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-[hsl(var(--wd-border-glass))] text-foreground text-[13px] font-bold tracking-[0.05em] uppercase px-6 py-3.5 hover:border-primary/40 hover:text-primary transition-all duration-300 active:scale-[0.97] whitespace-nowrap bg-[hsl(var(--wd-surface-glass))] backdrop-blur-md">
                   Book a consultation
                 </Link>
               </div>
             </form>
           </div>
 
-          <CitationTicker variant="dark" />
+          <CitationTicker variant="light" />
         </div>
       </section>
 
       {/* ═══════ METHOD STRIP ═══════ */}
       <section className="relative py-12 md:py-14">
-        <div className="container relative z-10 rounded-[20px] bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] px-8 py-10">
+        <div className="container relative z-10 rounded-[20px] wd-glass px-8 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
               { label: "Operator-led", desc: "We founded and operate our own brand in regulated financial services — then applied the playbook to clients." },
@@ -178,7 +178,7 @@ const Index = () => {
             ].map((item) => (
               <div key={item.label} className="text-center md:text-left">
                 <div className="text-[13px] font-bold tracking-[0.08em] uppercase text-primary mb-2">{item.label}</div>
-                <div className="text-body-sm text-white/80 leading-snug">{item.desc}</div>
+                <div className="text-body-sm text-muted-foreground leading-snug">{item.desc}</div>
               </div>
             ))}
           </div>
@@ -188,15 +188,15 @@ const Index = () => {
       {/* ═══════ TRACK RECORD ═══════ */}
       <section className="relative py-16 md:py-36">
         <div className="container relative z-10">
-          <div className="rounded-[20px] bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] p-8 md:p-14 mb-8">
+          <div className="rounded-[20px] wd-glass p-8 md:p-14 mb-8">
             <ScrollReveal>
               <div className="mb-12 md:mb-20">
                 <span className="text-overline text-primary mb-5 block">Our track record</span>
-                <h2 className="text-h1 mb-8 text-white">
+                <h2 className="text-h1 mb-8 text-foreground">
                   We built it ourselves.{" "}
                   <span className="wd-gradient-text">That's why it works.</span>
                 </h2>
-                <p className="text-body-lg text-white/70 mb-8 max-w-[65ch]">
+                <p className="text-body-lg text-muted-foreground mb-8 max-w-[65ch]">
                   We didn't start as an agency — we started by founding and operating a finance brand in the FCA-regulated broker comparison space. That hands-on experience in one of the hardest markets online is what our methodology is built on.
                 </p>
                 <Link to="/contact" className="inline-flex items-center gap-2 text-primary text-[13px] font-bold tracking-[0.05em] uppercase hover:text-accent transition-colors duration-200">
@@ -213,15 +213,15 @@ const Index = () => {
                 { icon: BarChart3, title: "Operators, not advisors", desc: "We compete daily in the same regulated markets our clients operate in. No other agency can say that." },
               ].map((item, i) => (
                 <ScrollReveal key={item.title} delay={i * 0.08}>
-                  <div className="rounded-[16px] bg-white/[0.05] border border-white/[0.08] p-8 h-full">
+                  <div className="rounded-[16px] wd-glass p-8 h-full">
                     <item.icon className="w-8 h-8 text-primary mb-5" />
                     {item.stat && (
                       <div className="mb-4">
                         <span className="text-[2.5rem] font-black text-primary leading-none">{item.stat}</span>
                       </div>
                     )}
-                    <h3 className="text-h3 text-white mb-3">{item.title}</h3>
-                    <p className="text-body text-white/60">{item.desc}</p>
+                    <h3 className="text-h3 text-foreground mb-3">{item.title}</h3>
+                    <p className="text-body text-muted-foreground">{item.desc}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -235,18 +235,18 @@ const Index = () => {
         <div className="container relative z-10">
           <ScrollReveal>
             <span className="text-overline text-primary mb-5 block">What we do</span>
-            <h2 className="text-h1 text-white mb-14 max-w-[30ch]">Seven specialisms. One growth engine.</h2>
+            <h2 className="text-h1 text-foreground mb-14 max-w-[30ch]">Seven specialisms. One growth engine.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {services.map((s, i) => (
               <ScrollReveal key={s.path} delay={i * 0.06}>
                 <Link
                   to={s.path}
-                  className="block rounded-[16px] bg-white/[0.05] backdrop-blur-lg border border-white/[0.08] p-7 h-full group hover:bg-white/[0.08] hover:border-primary/20 transition-all duration-300"
+                  className="block rounded-[16px] wd-glass p-7 h-full group hover:border-primary/20 transition-all duration-300"
                 >
                   <s.icon className="w-7 h-7 text-primary mb-5 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-h3 text-white mb-3">{s.title}</h3>
-                  <p className="text-body-sm text-white/55 mb-5">{s.desc}</p>
+                  <h3 className="text-h3 text-foreground mb-3">{s.title}</h3>
+                  <p className="text-body-sm text-muted-foreground mb-5">{s.desc}</p>
                   <span className="inline-flex items-center gap-1.5 text-primary text-xs font-bold tracking-[0.05em] uppercase group-hover:gap-2.5 transition-all duration-300">
                     Learn more <ArrowRight size={14} />
                   </span>
@@ -262,7 +262,7 @@ const Index = () => {
         <div className="container relative z-10">
           <ScrollReveal>
             <span className="text-overline text-primary mb-5 block">Explore</span>
-            <h2 className="text-h1 text-white mb-14 max-w-[30ch]">Go deeper.</h2>
+            <h2 className="text-h1 text-foreground mb-14 max-w-[30ch]">Go deeper.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
@@ -274,14 +274,14 @@ const Index = () => {
               <ScrollReveal key={card.path} delay={i * 0.08}>
                 <Link
                   to={card.path}
-                  className="group block rounded-[16px] bg-white/[0.04] backdrop-blur-lg border border-white/[0.08] overflow-hidden hover:bg-white/[0.07] hover:border-primary/20 transition-all duration-300"
+                  className="group block rounded-[16px] wd-glass overflow-hidden hover:border-primary/20 transition-all duration-300"
                 >
                   <div className="aspect-[16/9] overflow-hidden">
                     <img src={card.image} alt={card.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-7">
-                    <h3 className="text-h3 text-white mb-2">{card.title}</h3>
-                    <p className="text-body-sm text-white/55 mb-4">{card.desc}</p>
+                    <h3 className="text-h3 text-foreground mb-2">{card.title}</h3>
+                    <p className="text-body-sm text-muted-foreground mb-4">{card.desc}</p>
                     <span className="inline-flex items-center gap-1.5 text-primary text-xs font-bold tracking-[0.05em] uppercase group-hover:gap-2.5 transition-all duration-300">
                       {card.label} <ArrowRight size={14} />
                     </span>
@@ -298,13 +298,13 @@ const Index = () => {
         <div className="container relative z-10">
           <ScrollReveal>
             <span className="text-overline text-primary mb-5 block text-center">Brands we work alongside</span>
-            <p className="text-body-lg text-white/70 text-center max-w-[60ch] mx-auto mb-14">
+            <p className="text-body-lg text-muted-foreground text-center max-w-[60ch] mx-auto mb-14">
               We work alongside some of the biggest names in financial services — building AI visibility and driving qualified leads through deep understanding of the regulated finance sector.
             </p>
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="mb-16 overflow-hidden rounded-[20px] bg-white/[0.05] backdrop-blur-xl border border-white/[0.08] py-10">
+            <div className="mb-16 overflow-hidden rounded-[20px] wd-glass py-10">
               <div className="animate-logo-scroll flex items-center gap-16 md:gap-24 w-max">
                 {[...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos].map((client, i) => (
                   <img key={`${client.name}-${i}`} src={client.logo} alt={`${client.name} logo`} loading="lazy" className="h-12 md:h-16 w-auto object-contain opacity-60 hover:opacity-100 hover:scale-105 transition-all duration-300 shrink-0" />
@@ -320,9 +320,9 @@ const Index = () => {
               { stat: "#1", desc: "Most AI-cited independent source amongst our competitors — earned through the methodology we now offer to clients" },
             ].map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="rounded-[16px] bg-white/[0.05] backdrop-blur-lg border border-white/[0.08] p-10 text-center">
+                <div className="rounded-[16px] wd-glass p-10 text-center">
                   <div className="text-[clamp(1.75rem,3vw,2.5rem)] font-black text-primary leading-none mb-4">{item.stat}</div>
-                  <p className="text-body text-white/55">{item.desc}</p>
+                  <p className="text-body text-muted-foreground">{item.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -335,7 +335,7 @@ const Index = () => {
         <div className="container relative z-10">
           <ScrollReveal>
             <span className="text-overline text-[hsl(var(--wd-gold))] mb-5 block text-center">What partners say</span>
-            <h2 className="text-h1 text-white mb-16 text-center max-w-[30ch] mx-auto">Don't take our word for it.</h2>
+            <h2 className="text-h1 text-foreground mb-16 text-center max-w-[30ch] mx-auto">Don't take our word for it.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -358,17 +358,17 @@ const Index = () => {
               <ScrollReveal key={i} delay={i * 0.1}>
                 <div className="wd-glow-card p-8 h-full flex flex-col">
                   <div className="text-[hsl(var(--wd-gold))] text-3xl font-black mb-4 leading-none">"</div>
-                  <p className="text-body-sm text-white/75 mb-6 flex-1 italic">{t.quote}</p>
-                  <div className="border-t border-white/[0.08] pt-4">
-                    <div className="text-body-sm font-bold text-white">{t.name}</div>
-                    <div className="text-caption text-white/50">{t.company}</div>
+                  <p className="text-body-sm text-muted-foreground mb-6 flex-1 italic">{t.quote}</p>
+                  <div className="border-t border-[hsl(var(--wd-border-glass))] pt-4">
+                    <div className="text-body-sm font-bold text-foreground">{t.name}</div>
+                    <div className="text-caption text-muted-foreground">{t.company}</div>
                   </div>
                 </div>
               </ScrollReveal>
             ))}
           </div>
           <ScrollReveal delay={0.3}>
-            <p className="text-caption text-white/40 text-center mt-10">Named testimonials available on request. Contact details anonymised for partner confidentiality.</p>
+            <p className="text-caption text-muted-foreground text-center mt-10">Named testimonials available on request. Contact details anonymised for partner confidentiality.</p>
           </ScrollReveal>
         </div>
       </section>
@@ -379,16 +379,16 @@ const Index = () => {
       {/* ═══════ THE PROBLEM + WHY WOLFSTONE ═══════ */}
       <section className="relative py-16 md:py-36">
         <div className="container relative z-10">
-          <div className="rounded-[20px] bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] p-8 md:p-14">
+          <div className="rounded-[20px] wd-glass p-8 md:p-14">
             <ScrollReveal>
               <span className="text-overline text-primary mb-5 block">The problem — and why we're different</span>
-              <h2 className="text-h1 text-white mb-14 max-w-[30ch]">AI search is here. Most brands are invisible.</h2>
+              <h2 className="text-h1 text-foreground mb-14 max-w-[30ch]">AI search is here. Most brands are invisible.</h2>
             </ScrollReveal>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
               <div>
                 <ScrollReveal>
-                  <h3 className="text-h2 text-white mb-10">The 5 problems</h3>
+                  <h3 className="text-h2 text-foreground mb-10">The 5 problems</h3>
                 </ScrollReveal>
                 <div className="space-y-7">
                   {problems.map((p, i) => (
@@ -396,9 +396,9 @@ const Index = () => {
                       <div className="border-l-2 border-primary pl-6">
                         <div className="flex items-center gap-3 mb-2">
                           <span className="text-overline text-primary">{p.num}</span>
-                          <h4 className="text-h3 text-white">{p.title}</h4>
+                          <h4 className="text-h3 text-foreground">{p.title}</h4>
                         </div>
-                        <p className="text-body-sm text-white/55">{p.desc}</p>
+                        <p className="text-body-sm text-muted-foreground">{p.desc}</p>
                       </div>
                     </ScrollReveal>
                   ))}
@@ -407,7 +407,7 @@ const Index = () => {
 
               <div>
                 <ScrollReveal>
-                  <h3 className="text-h2 text-white mb-10">Why Wolfstone</h3>
+                  <h3 className="text-h2 text-foreground mb-10">Why Wolfstone</h3>
                 </ScrollReveal>
                 <div className="space-y-7">
                   {whyUs.map((item, i) => (
@@ -415,8 +415,8 @@ const Index = () => {
                       <div className="flex gap-5 items-start">
                         <item.icon className="w-6 h-6 text-primary shrink-0 mt-1" />
                         <div>
-                          <h4 className="text-h3 text-white mb-2">{item.title}</h4>
-                          <p className="text-body-sm text-white/55">{item.desc}</p>
+                          <h4 className="text-h3 text-foreground mb-2">{item.title}</h4>
+                          <p className="text-body-sm text-muted-foreground">{item.desc}</p>
                         </div>
                       </div>
                     </ScrollReveal>
@@ -433,24 +433,24 @@ const Index = () => {
         <div className="container relative z-10">
           <ScrollReveal>
             <span className="text-overline text-primary mb-5 block">Free tools</span>
-            <h2 className="text-h1 text-white mb-14 max-w-[30ch]">Try before you buy.</h2>
+            <h2 className="text-h1 text-foreground mb-14 max-w-[30ch]">Try before you buy.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ScrollReveal>
-              <Link to="/tools/ai-visibility-checker" className="block rounded-[16px] bg-white/[0.05] backdrop-blur-lg border border-white/[0.08] p-10 h-full group hover:bg-white/[0.08] hover:border-primary/20 transition-all duration-300">
+              <Link to="/tools/ai-visibility-checker" className="block rounded-[16px] wd-glass p-10 h-full group hover:border-primary/20 transition-all duration-300">
                 <Brain className="w-10 h-10 text-primary mb-5" />
-                <h3 className="text-h2 text-white mb-4">AI visibility audit</h3>
-                <p className="text-body text-white/55 mb-8">Find out if your brand is being cited by ChatGPT, Gemini, Perplexity, Copilot & Claude. See your score across all 5 platforms.</p>
+                <h3 className="text-h2 text-foreground mb-4">AI visibility audit</h3>
+                <p className="text-body text-muted-foreground mb-8">Find out if your brand is being cited by ChatGPT, Gemini, Perplexity, Copilot & Claude. See your score across all 5 platforms.</p>
                 <span className="inline-flex items-center gap-2 text-primary text-[13px] font-bold tracking-[0.05em] uppercase group-hover:gap-3 transition-all duration-200">
                   Check your brand <ArrowRight size={16} />
                 </span>
               </Link>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <Link to="/tools/backlink-checker" className="block rounded-[16px] bg-white/[0.05] backdrop-blur-lg border border-white/[0.08] p-10 h-full group hover:bg-white/[0.08] hover:border-primary/20 transition-all duration-300">
+              <Link to="/tools/backlink-checker" className="block rounded-[16px] wd-glass p-10 h-full group hover:border-primary/20 transition-all duration-300">
                 <Link2 className="w-10 h-10 text-primary mb-5" />
-                <h3 className="text-h2 text-white mb-4">Backlink value checker</h3>
-                <p className="text-body text-white/55 mb-8">Paste any URL to get an instant AI analysis of its backlink value — domain authority, spam risk, content quality, and estimated link worth.</p>
+                <h3 className="text-h2 text-foreground mb-4">Backlink value checker</h3>
+                <p className="text-body text-muted-foreground mb-8">Paste any URL to get an instant AI analysis of its backlink value — domain authority, spam risk, content quality, and estimated link worth.</p>
                 <span className="inline-flex items-center gap-2 text-primary text-[13px] font-bold tracking-[0.05em] uppercase group-hover:gap-3 transition-all duration-200">
                   Check a backlink <ArrowRight size={16} />
                 </span>
