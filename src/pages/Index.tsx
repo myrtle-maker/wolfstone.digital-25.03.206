@@ -4,11 +4,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import SEOHead from "@/components/SEOHead";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
-import LogoTexture from "@/components/LogoTexture";
-import WatermarkTexture from "@/components/WatermarkTexture";
 import CitationTicker from "@/components/CitationTicker";
 import AuroraBackground from "@/components/AuroraBackground";
-import CountUp from "@/components/CountUp";
 import {
   Search, Zap, Shield, BarChart3, Users, Brain, ArrowRight,
   Eye, Megaphone, Link2,
@@ -121,9 +118,11 @@ const Index = () => {
         jsonLd={jsonLd}
       />
 
-      {/* ═══════ HERO (DARK + AURORA) ═══════ */}
-      <section className="relative overflow-hidden bg-wd-navy pt-20">
-        <AuroraBackground intensity={0.7} speed={0.8} variant="cyan" />
+      {/* ═══════ FULL-PAGE NEURAL NETWORK BACKGROUND ═══════ */}
+      <AuroraBackground intensity={0.35} speed={0.5} variant="mixed" fullPage />
+
+      {/* ═══════ HERO ═══════ */}
+      <section className="relative pt-20">
 
         <div className="container relative z-10 grid min-h-[88vh] items-center gap-8 py-16 md:py-28 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1fr)] lg:gap-6 xl:gap-10">
           <div className="max-w-[40rem]">
@@ -167,9 +166,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════ METHOD STRIP (DARK) ═══════ */}
-      <section className="bg-[hsl(var(--wd-navy-mid))] py-12 md:py-14 border-y border-white/[0.04]">
-        <div className="container">
+      {/* ═══════ METHOD STRIP ═══════ */}
+      <section className="relative py-12 md:py-14">
+        <div className="container relative z-10 rounded-[20px] bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] px-8 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
               { label: "Operator-led", desc: "We founded and operate our own brand in regulated financial services — then applied the playbook to clients." },
@@ -186,69 +185,69 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════ TRACK RECORD (WHITE + TEXTURE) ═══════ */}
-      <section className="bg-[hsl(var(--wd-cream))] wd-texture py-16 md:py-36 relative overflow-hidden">
-        <WatermarkTexture opacity={0.025} position="right" />
+      {/* ═══════ TRACK RECORD ═══════ */}
+      <section className="relative py-16 md:py-36">
         <div className="container relative z-10">
-          <ScrollReveal>
-            <div className="mb-12 md:mb-20">
-              <span className="text-overline text-[hsl(var(--wd-blue))] mb-5 block">Our track record</span>
-              <h2 className="text-h1 mb-8 text-[hsl(var(--wd-navy-text))]">
-                We built it ourselves.{" "}
-                <span className="text-[hsl(var(--wd-blue))]">That's why it works.</span>
-              </h2>
-              <p className="text-body-lg text-[hsl(var(--wd-navy-text))]/80 mb-8 max-w-[65ch]">
-                We didn't start as an agency — we started by founding and operating a finance brand in the FCA-regulated broker comparison space. That hands-on experience in one of the hardest markets online is what our methodology is built on.
-              </p>
-              <Link to="/contact" className="inline-flex items-center gap-2 text-[hsl(var(--wd-blue))] text-[13px] font-bold tracking-[0.05em] uppercase hover:text-primary transition-colors duration-200">
-                Book a consultation <ArrowRight size={16} />
-              </Link>
-            </div>
-          </ScrollReveal>
+          <div className="rounded-[20px] bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] p-8 md:p-14 mb-8">
+            <ScrollReveal>
+              <div className="mb-12 md:mb-20">
+                <span className="text-overline text-primary mb-5 block">Our track record</span>
+                <h2 className="text-h1 mb-8 text-white">
+                  We built it ourselves.{" "}
+                  <span className="wd-gradient-text">That's why it works.</span>
+                </h2>
+                <p className="text-body-lg text-white/70 mb-8 max-w-[65ch]">
+                  We didn't start as an agency — we started by founding and operating a finance brand in the FCA-regulated broker comparison space. That hands-on experience in one of the hardest markets online is what our methodology is built on.
+                </p>
+                <Link to="/contact" className="inline-flex items-center gap-2 text-primary text-[13px] font-bold tracking-[0.05em] uppercase hover:text-accent transition-colors duration-200">
+                  Book a consultation <ArrowRight size={16} />
+                </Link>
+              </div>
+            </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              { icon: Target, title: "Built from scratch", desc: "A live, revenue-generating international finance brand we founded and operate in a regulated market. That real-world experience shapes everything we do." },
-              { icon: TrendingUp, title: "Cited across every LLM", desc: "Our own finance brand is the most AI-cited independent source amongst our competitors — referenced by ChatGPT, Gemini, Perplexity, Copilot, and Claude. Authority earned through genuine expertise, not shortcuts.", stat: "#1" },
-              { icon: Shield, title: "Cross-platform authority", desc: "Thousands of referring domains and backlinks, built organically through editorial quality and depth of knowledge." },
-              { icon: BarChart3, title: "Operators, not advisors", desc: "We compete daily in the same regulated markets our clients operate in. No other agency can say that." },
-            ].map((item, i) => (
-              <ScrollReveal key={item.title} delay={i * 0.08}>
-                <div className="wd-card-light p-10 h-full">
-                  <item.icon className="w-8 h-8 text-[hsl(var(--wd-blue))] mb-5" />
-                  {item.stat && (
-                    <div className="mb-4">
-                      <span className="text-[2.5rem] font-black text-[hsl(var(--wd-blue))] leading-none">{item.stat}</span>
-                    </div>
-                  )}
-                  <h3 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-3">{item.title}</h3>
-                  <p className="text-body text-[hsl(var(--wd-navy-text))]/70">{item.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { icon: Target, title: "Built from scratch", desc: "A live, revenue-generating international finance brand we founded and operate in a regulated market. That real-world experience shapes everything we do." },
+                { icon: TrendingUp, title: "Cited across every LLM", desc: "Our own finance brand is the most AI-cited independent source amongst our competitors — referenced by ChatGPT, Gemini, Perplexity, Copilot, and Claude. Authority earned through genuine expertise, not shortcuts.", stat: "#1" },
+                { icon: Shield, title: "Cross-platform authority", desc: "Thousands of referring domains and backlinks, built organically through editorial quality and depth of knowledge." },
+                { icon: BarChart3, title: "Operators, not advisors", desc: "We compete daily in the same regulated markets our clients operate in. No other agency can say that." },
+              ].map((item, i) => (
+                <ScrollReveal key={item.title} delay={i * 0.08}>
+                  <div className="rounded-[16px] bg-white/[0.05] border border-white/[0.08] p-8 h-full">
+                    <item.icon className="w-8 h-8 text-primary mb-5" />
+                    {item.stat && (
+                      <div className="mb-4">
+                        <span className="text-[2.5rem] font-black text-primary leading-none">{item.stat}</span>
+                      </div>
+                    )}
+                    <h3 className="text-h3 text-white mb-3">{item.title}</h3>
+                    <p className="text-body text-white/60">{item.desc}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════ SERVICES (STONE) ═══════ */}
-      <section className="bg-[hsl(var(--wd-stone))] py-16 md:py-36 relative overflow-hidden">
-        <LogoTexture opacity={0.012} density="sparse" variant="dark" />
+      {/* ═══════ SERVICES ═══════ */}
+      <section className="relative py-16 md:py-36">
         <div className="container relative z-10">
           <ScrollReveal>
-            <span className="text-overline text-[hsl(var(--wd-blue))] mb-5 block">What we do</span>
-            <h2 className="text-h1 text-[hsl(var(--wd-navy-text))] mb-14 max-w-[30ch]">Seven specialisms. One growth engine.</h2>
+            <span className="text-overline text-primary mb-5 block">What we do</span>
+            <h2 className="text-h1 text-white mb-14 max-w-[30ch]">Seven specialisms. One growth engine.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {services.map((s, i) => (
               <ScrollReveal key={s.path} delay={i * 0.06}>
                 <Link
                   to={s.path}
-                  className="block wd-card-light p-7 h-full group"
+                  className="block rounded-[16px] bg-white/[0.05] backdrop-blur-lg border border-white/[0.08] p-7 h-full group hover:bg-white/[0.08] hover:border-primary/20 transition-all duration-300"
                 >
-                  <s.icon className="w-7 h-7 text-[hsl(var(--wd-blue))] mb-5 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-3">{s.title}</h3>
-                  <p className="text-body-sm text-[hsl(var(--wd-navy-text))]/55 mb-5">{s.desc}</p>
-                  <span className="inline-flex items-center gap-1.5 text-[hsl(var(--wd-blue))] text-xs font-bold tracking-[0.05em] uppercase group-hover:gap-2.5 transition-all duration-300">
+                  <s.icon className="w-7 h-7 text-primary mb-5 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-h3 text-white mb-3">{s.title}</h3>
+                  <p className="text-body-sm text-white/55 mb-5">{s.desc}</p>
+                  <span className="inline-flex items-center gap-1.5 text-primary text-xs font-bold tracking-[0.05em] uppercase group-hover:gap-2.5 transition-all duration-300">
                     Learn more <ArrowRight size={14} />
                   </span>
                 </Link>
@@ -258,13 +257,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════ FEATURED LINKS (CREAM) ═══════ */}
-      <section className="bg-[hsl(var(--wd-cream))] py-16 md:py-36 relative overflow-hidden">
-        <WatermarkTexture opacity={0.02} position="left" />
+      {/* ═══════ FEATURED LINKS ═══════ */}
+      <section className="relative py-16 md:py-36">
         <div className="container relative z-10">
           <ScrollReveal>
-            <span className="text-overline text-[hsl(var(--wd-blue))] mb-5 block">Explore</span>
-            <h2 className="text-h1 text-[hsl(var(--wd-navy-text))] mb-14 max-w-[30ch]">Go deeper.</h2>
+            <span className="text-overline text-primary mb-5 block">Explore</span>
+            <h2 className="text-h1 text-white mb-14 max-w-[30ch]">Go deeper.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
@@ -276,15 +274,15 @@ const Index = () => {
               <ScrollReveal key={card.path} delay={i * 0.08}>
                 <Link
                   to={card.path}
-                  className="group block wd-card-light overflow-hidden"
+                  className="group block rounded-[16px] bg-white/[0.04] backdrop-blur-lg border border-white/[0.08] overflow-hidden hover:bg-white/[0.07] hover:border-primary/20 transition-all duration-300"
                 >
                   <div className="aspect-[16/9] overflow-hidden">
                     <img src={card.image} alt={card.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-7">
-                    <h3 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-2">{card.title}</h3>
-                    <p className="text-body-sm text-[hsl(var(--wd-navy-text))]/55 mb-4">{card.desc}</p>
-                    <span className="inline-flex items-center gap-1.5 text-[hsl(var(--wd-blue))] text-xs font-bold tracking-[0.05em] uppercase group-hover:gap-2.5 transition-all duration-300">
+                    <h3 className="text-h3 text-white mb-2">{card.title}</h3>
+                    <p className="text-body-sm text-white/55 mb-4">{card.desc}</p>
+                    <span className="inline-flex items-center gap-1.5 text-primary text-xs font-bold tracking-[0.05em] uppercase group-hover:gap-2.5 transition-all duration-300">
                       {card.label} <ArrowRight size={14} />
                     </span>
                   </div>
@@ -295,19 +293,18 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════ BRANDS WE WORK ALONGSIDE (WHITE + TEXTURE) ═══════ */}
-      <section className="bg-[hsl(var(--wd-cream))] wd-texture py-16 md:py-36 relative overflow-hidden">
-        <WatermarkTexture opacity={0.02} position="left" />
+      {/* ═══════ BRANDS WE WORK ALONGSIDE ═══════ */}
+      <section className="relative py-16 md:py-36">
         <div className="container relative z-10">
           <ScrollReveal>
-            <span className="text-overline text-[hsl(var(--wd-blue))] mb-5 block text-center">Brands we work alongside</span>
-            <p className="text-body-lg text-[hsl(var(--wd-navy-text))]/80 text-center max-w-[60ch] mx-auto mb-14">
+            <span className="text-overline text-primary mb-5 block text-center">Brands we work alongside</span>
+            <p className="text-body-lg text-white/70 text-center max-w-[60ch] mx-auto mb-14">
               We work alongside some of the biggest names in financial services — building AI visibility and driving qualified leads through deep understanding of the regulated finance sector.
             </p>
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="mb-16 overflow-hidden rounded-[16px] bg-white border border-[hsl(var(--wd-warm-grey))]/40 py-10 shadow-glow">
+            <div className="mb-16 overflow-hidden rounded-[20px] bg-white/[0.05] backdrop-blur-xl border border-white/[0.08] py-10">
               <div className="animate-logo-scroll flex items-center gap-16 md:gap-24 w-max">
                 {[...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos].map((client, i) => (
                   <img key={`${client.name}-${i}`} src={client.logo} alt={`${client.name} logo`} loading="lazy" className="h-12 md:h-16 w-auto object-contain opacity-60 hover:opacity-100 hover:scale-105 transition-all duration-300 shrink-0" />
@@ -316,16 +313,16 @@ const Index = () => {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { stat: "900+", desc: "New clients driven to a major trading platform through a single targeted campaign" },
               { stat: "5", desc: "Major financial brands we actively work with in the regulated finance sector" },
               { stat: "#1", desc: "Most AI-cited independent source amongst our competitors — earned through the methodology we now offer to clients" },
             ].map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="wd-card-light p-10 text-center">
-                  <div className="text-[clamp(1.75rem,3vw,2.5rem)] font-black text-[hsl(var(--wd-blue))] leading-none mb-4">{item.stat}</div>
-                  <p className="text-body text-[hsl(var(--wd-navy-text))]/55">{item.desc}</p>
+                <div className="rounded-[16px] bg-white/[0.05] backdrop-blur-lg border border-white/[0.08] p-10 text-center">
+                  <div className="text-[clamp(1.75rem,3vw,2.5rem)] font-black text-primary leading-none mb-4">{item.stat}</div>
+                  <p className="text-body text-white/55">{item.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -333,9 +330,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════ TESTIMONIALS (DARK + AURORA) ═══════ */}
-      <section className="bg-wd-navy py-16 md:py-36 relative overflow-hidden">
-        <AuroraBackground intensity={0.4} speed={0.6} variant="mixed" />
+      {/* ═══════ TESTIMONIALS ═══════ */}
+      <section className="relative py-16 md:py-36">
         <div className="container relative z-10">
           <ScrollReveal>
             <span className="text-overline text-[hsl(var(--wd-gold))] mb-5 block text-center">What partners say</span>
@@ -380,82 +376,82 @@ const Index = () => {
       {/* ═══════ INDUSTRIES (CREAM) ═══════ */}
       {/* Industries section kept inline if it exists in original — not present in lines 337+ so skipping */}
 
-      {/* ═══════ THE PROBLEM + WHY WOLFSTONE (STONE) ═══════ */}
-      <section className="bg-[hsl(var(--wd-stone))] py-16 md:py-36 relative overflow-hidden">
-        <LogoTexture opacity={0.01} density="normal" variant="dark" />
+      {/* ═══════ THE PROBLEM + WHY WOLFSTONE ═══════ */}
+      <section className="relative py-16 md:py-36">
         <div className="container relative z-10">
-          <ScrollReveal>
-            <span className="text-overline text-[hsl(var(--wd-blue))] mb-5 block">The problem — and why we're different</span>
-            <h2 className="text-h1 text-[hsl(var(--wd-navy-text))] mb-14 max-w-[30ch]">AI search is here. Most brands are invisible.</h2>
-          </ScrollReveal>
+          <div className="rounded-[20px] bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] p-8 md:p-14">
+            <ScrollReveal>
+              <span className="text-overline text-primary mb-5 block">The problem — and why we're different</span>
+              <h2 className="text-h1 text-white mb-14 max-w-[30ch]">AI search is here. Most brands are invisible.</h2>
+            </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-            <div>
-              <ScrollReveal>
-                <h3 className="text-h2 text-[hsl(var(--wd-navy-text))] mb-10">The 5 problems</h3>
-              </ScrollReveal>
-              <div className="space-y-7">
-                {problems.map((p, i) => (
-                  <ScrollReveal key={p.num} delay={i * 0.06}>
-                    <div className="border-l-2 border-[hsl(var(--wd-blue))] pl-6">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-overline text-[hsl(var(--wd-blue))]">{p.num}</span>
-                        <h4 className="text-h3 text-[hsl(var(--wd-navy-text))]">{p.title}</h4>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+              <div>
+                <ScrollReveal>
+                  <h3 className="text-h2 text-white mb-10">The 5 problems</h3>
+                </ScrollReveal>
+                <div className="space-y-7">
+                  {problems.map((p, i) => (
+                    <ScrollReveal key={p.num} delay={i * 0.06}>
+                      <div className="border-l-2 border-primary pl-6">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="text-overline text-primary">{p.num}</span>
+                          <h4 className="text-h3 text-white">{p.title}</h4>
+                        </div>
+                        <p className="text-body-sm text-white/55">{p.desc}</p>
                       </div>
-                      <p className="text-body-sm text-[hsl(var(--wd-navy-text))]/55">{p.desc}</p>
-                    </div>
-                  </ScrollReveal>
-                ))}
+                    </ScrollReveal>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div>
-              <ScrollReveal>
-                <h3 className="text-h2 text-[hsl(var(--wd-navy-text))] mb-10">Why Wolfstone</h3>
-              </ScrollReveal>
-              <div className="space-y-7">
-                {whyUs.map((item, i) => (
-                  <ScrollReveal key={item.title} delay={i * 0.06}>
-                    <div className="flex gap-5 items-start">
-                      <item.icon className="w-6 h-6 text-[hsl(var(--wd-blue))] shrink-0 mt-1" />
-                      <div>
-                        <h4 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-2">{item.title}</h4>
-                        <p className="text-body-sm text-[hsl(var(--wd-navy-text))]/55">{item.desc}</p>
+              <div>
+                <ScrollReveal>
+                  <h3 className="text-h2 text-white mb-10">Why Wolfstone</h3>
+                </ScrollReveal>
+                <div className="space-y-7">
+                  {whyUs.map((item, i) => (
+                    <ScrollReveal key={item.title} delay={i * 0.06}>
+                      <div className="flex gap-5 items-start">
+                        <item.icon className="w-6 h-6 text-primary shrink-0 mt-1" />
+                        <div>
+                          <h4 className="text-h3 text-white mb-2">{item.title}</h4>
+                          <p className="text-body-sm text-white/55">{item.desc}</p>
+                        </div>
                       </div>
-                    </div>
-                  </ScrollReveal>
-                ))}
+                    </ScrollReveal>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════ FREE TOOLS (WHITE + TEXTURE) ═══════ */}
-      <section className="bg-[hsl(var(--wd-cream))] wd-texture py-16 md:py-36 relative overflow-hidden">
-        <WatermarkTexture opacity={0.02} position="right" />
+      {/* ═══════ FREE TOOLS ═══════ */}
+      <section className="relative py-16 md:py-36">
         <div className="container relative z-10">
           <ScrollReveal>
-            <span className="text-overline text-[hsl(var(--wd-blue))] mb-5 block">Free tools</span>
-            <h2 className="text-h1 text-[hsl(var(--wd-navy-text))] mb-14 max-w-[30ch]">Try before you buy.</h2>
+            <span className="text-overline text-primary mb-5 block">Free tools</span>
+            <h2 className="text-h1 text-white mb-14 max-w-[30ch]">Try before you buy.</h2>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ScrollReveal>
-              <Link to="/tools/ai-visibility-checker" className="block wd-card-light p-10 h-full group">
-                <Brain className="w-10 h-10 text-[hsl(var(--wd-blue))] mb-5" />
-                <h3 className="text-h2 text-[hsl(var(--wd-navy-text))] mb-4">AI visibility audit</h3>
-                <p className="text-body text-[hsl(var(--wd-navy-text))]/55 mb-8">Find out if your brand is being cited by ChatGPT, Gemini, Perplexity, Copilot & Claude. See your score across all 5 platforms.</p>
-                <span className="inline-flex items-center gap-2 text-[hsl(var(--wd-blue))] text-[13px] font-bold tracking-[0.05em] uppercase group-hover:gap-3 transition-all duration-200">
+              <Link to="/tools/ai-visibility-checker" className="block rounded-[16px] bg-white/[0.05] backdrop-blur-lg border border-white/[0.08] p-10 h-full group hover:bg-white/[0.08] hover:border-primary/20 transition-all duration-300">
+                <Brain className="w-10 h-10 text-primary mb-5" />
+                <h3 className="text-h2 text-white mb-4">AI visibility audit</h3>
+                <p className="text-body text-white/55 mb-8">Find out if your brand is being cited by ChatGPT, Gemini, Perplexity, Copilot & Claude. See your score across all 5 platforms.</p>
+                <span className="inline-flex items-center gap-2 text-primary text-[13px] font-bold tracking-[0.05em] uppercase group-hover:gap-3 transition-all duration-200">
                   Check your brand <ArrowRight size={16} />
                 </span>
               </Link>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <Link to="/tools/backlink-checker" className="block wd-card-light p-10 h-full group">
-                <Link2 className="w-10 h-10 text-[hsl(var(--wd-blue))] mb-5" />
-                <h3 className="text-h2 text-[hsl(var(--wd-navy-text))] mb-4">Backlink value checker</h3>
-                <p className="text-body text-[hsl(var(--wd-navy-text))]/55 mb-8">Paste any URL to get an instant AI analysis of its backlink value — domain authority, spam risk, content quality, and estimated link worth.</p>
-                <span className="inline-flex items-center gap-2 text-[hsl(var(--wd-blue))] text-[13px] font-bold tracking-[0.05em] uppercase group-hover:gap-3 transition-all duration-200">
+              <Link to="/tools/backlink-checker" className="block rounded-[16px] bg-white/[0.05] backdrop-blur-lg border border-white/[0.08] p-10 h-full group hover:bg-white/[0.08] hover:border-primary/20 transition-all duration-300">
+                <Link2 className="w-10 h-10 text-primary mb-5" />
+                <h3 className="text-h2 text-white mb-4">Backlink value checker</h3>
+                <p className="text-body text-white/55 mb-8">Paste any URL to get an instant AI analysis of its backlink value — domain authority, spam risk, content quality, and estimated link worth.</p>
+                <span className="inline-flex items-center gap-2 text-primary text-[13px] font-bold tracking-[0.05em] uppercase group-hover:gap-3 transition-all duration-200">
                   Check a backlink <ArrowRight size={16} />
                 </span>
               </Link>
