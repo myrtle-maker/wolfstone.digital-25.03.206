@@ -119,7 +119,7 @@ const Index = () => {
       />
 
       {/* ═══════ FULL-PAGE NEURAL NETWORK BACKGROUND ═══════ */}
-      <AuroraBackground intensity={0.35} speed={0.5} variant="mixed" fullPage />
+      <AuroraBackground intensity={0.45} speed={0.5} variant="mixed" fullPage />
 
       {/* ═══════ HERO ═══════ */}
       <section className="relative pt-20">
@@ -132,7 +132,7 @@ const Index = () => {
               We <span className="wd-gradient-text">dominate it.</span>
             </h1>
 
-            <p className="text-body md:text-body-lg text-white/70 max-w-[34rem] mb-8 md:mb-12 leading-relaxed">
+            <p className="text-body md:text-body-lg text-white/70 max-w-[34rem] mb-8 md:mb-12 leading-relaxed" style={{ textShadow: '0 1px 8px hsl(220 50% 6% / 0.9), 0 0 20px hsl(220 50% 6% / 0.7)' }}>
               We come from financial services — one of the most regulated, competitive sectors online. We founded and operate our own international finance brand, now the most AI-cited independent source amongst our competitors across ChatGPT, Gemini, Perplexity, Copilot, and Claude. That deep industry expertise gave us an unfair advantage in understanding what makes content genuinely authoritative. Now we deploy the same methodology for select partners.
             </p>
 
