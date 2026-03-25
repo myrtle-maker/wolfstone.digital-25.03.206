@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+Sitemap: https://wolfstonedigital.co.uk/sitemap.xml
