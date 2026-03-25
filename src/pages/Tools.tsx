@@ -70,7 +70,7 @@ const ToolsPage = () => (
       jsonLd={jsonLd}
     />
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <Breadcrumbs items={[{ label: "Free SEO Tools" }]} />
         <ScrollReveal>
@@ -94,7 +94,7 @@ const ToolsPage = () => (
             <ScrollReveal key={tool.path} delay={i * 0.1}>
               <Link
                 to={tool.path}
-                className="block bg-card border border-primary/[0.15] rounded-[12px] p-8 hover:border-primary/[0.45] transition-all duration-200 h-full group"
+                className="block wd-glow-card p-8 transition-all duration-200 h-full group"
               >
                 <tool.icon className="w-10 h-10 text-primary mb-5" />
                 <h2 className="text-h2 mb-4">{tool.title}</h2>
@@ -110,7 +110,7 @@ const ToolsPage = () => (
           <ScrollReveal delay={tools.length * 0.1}>
             <Link
               to="/tools/pro"
-              className="block bg-card border border-primary/[0.15] rounded-[12px] p-8 hover:border-primary/[0.45] transition-all duration-200 h-full group relative overflow-hidden"
+              className="block wd-glow-card p-8 transition-all duration-200 h-full group relative overflow-hidden"
             >
               <div className="absolute top-4 right-4">
                 <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded-full">
@@ -132,7 +132,7 @@ const ToolsPage = () => (
     </section>
 
     {/* Client portal CTA */}
-    <section className="bg-wd-navy py-16 md:py-24 relative overflow-hidden">
+    <section className="bg-wd-navy wd-ambient-glow py-16 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 pointer-events-none" />
       <div className="container relative">
         <ScrollReveal>

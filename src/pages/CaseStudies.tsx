@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 const CaseStudies = () => {
   return (
     <main className="pt-20">
-      <section className="bg-wd-navy py-20 md:py-28">
+      <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
         <div className="container">
           <ScrollReveal>
             <span className="text-overline text-primary mb-4 block">Track record</span>
@@ -42,7 +42,7 @@ const CaseStudies = () => {
               </ScrollReveal>
             </div>
             <ScrollReveal delay={0.15}>
-              <div className="bg-card border border-primary/[0.15] rounded-[20px] p-10 text-center">
+              <div className="wd-glow-card rounded-[20px] p-10 text-center">
                 <div className="text-[clamp(3rem,6vw,4.5rem)] font-black leading-none text-accent mb-3">
                   900+
                 </div>
@@ -55,7 +55,7 @@ const CaseStudies = () => {
       </section>
 
       {/* Testimonials note */}
-      <section className="bg-wd-navy py-16 md:py-20 border-y border-primary/10">
+      <section className="bg-wd-navy wd-ambient-glow py-16 md:py-20 border-y border-primary/10">
         <div className="container text-center">
           <ScrollReveal>
             <p className="text-body-lg text-wd-muted">

@@ -27,7 +27,7 @@ const ContentPage = () => (
   <main className="pt-20">
     <SEOHead title="SEO & GEO Content UK | AI-Optimised Content Strategy | Wolfstone Digital" description="SEO and GEO optimised content plans, strategy, and writing that ranks in search and gets cited by AI. In-house editorial and production." canonical="/services/content/" jsonLd={jsonLd} />
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <Breadcrumbs items={[{ label: "Services", path: "/services" }, { label: "Content" }]} />
         <ScrollReveal><span className="text-overline text-primary mb-4 block">Content services</span></ScrollReveal>

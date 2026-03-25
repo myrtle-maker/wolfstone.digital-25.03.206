@@ -27,7 +27,7 @@ const SocialMediaPage = () => (
   <main className="pt-20">
     <SEOHead title="Social Media & Community Marketing | Reddit & Forum Exposure | Wolfstone Digital" description="End-to-end social content creation, Reddit and forum brand exposure. Domains with Reddit mentions have 4x higher AI citation rates." canonical="/services/social-media/" jsonLd={jsonLd} />
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <Breadcrumbs items={[{ label: "Services", path: "/services" }, { label: "Social media" }]} />
         <ScrollReveal><span className="text-overline text-primary mb-4 block">Social media & community</span></ScrollReveal>

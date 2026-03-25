@@ -22,7 +22,7 @@ const seoDetails = [
 const Services = () => {
   return (
     <main className="pt-20">
-      <section className="bg-wd-navy py-20 md:py-28">
+      <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
         <div className="container">
           <ScrollReveal>
             <span className="text-overline text-primary mb-4 block">Services</span>
@@ -101,7 +101,7 @@ const Services = () => {
         </div>
       </section>
 
-      <section className="bg-wd-navy py-20 md:py-28 text-center">
+      <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28 text-center">
         <div className="container">
           <ScrollReveal>
             <h2 className="text-h1 mb-6 text-white">Ready to outperform?</h2>

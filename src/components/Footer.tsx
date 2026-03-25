@@ -3,7 +3,7 @@ import wolfstoneLogoWhite from "@/assets/wolfstone-logo-white.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-wd-navy border-t border-[hsl(var(--wd-gold))]/20">
+    <footer className="bg-wd-navy relative border-t border-white/[0.05]">
       <div className="container py-16">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           <div className="col-span-2 lg:col-span-2">

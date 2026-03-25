@@ -70,7 +70,7 @@ const Contact = () => {
     setSubmitted(true);
   };
 
-  const inputClass = "w-full bg-[hsl(var(--wd-stone))] border border-[hsl(var(--wd-warm-grey))] rounded-md px-4 py-3 text-[hsl(var(--wd-navy-text))] placeholder:text-[hsl(var(--wd-navy-text))]/40 focus:outline-none focus:border-[hsl(var(--wd-blue))] focus:ring-1 focus:ring-[hsl(var(--wd-blue))]/20 transition-colors duration-200 text-body";
+  const inputClass = "w-full bg-[hsl(var(--wd-stone))] border border-white/[0.08] rounded-[12px] px-4 py-3 text-[hsl(var(--wd-navy-text))] placeholder:text-[hsl(var(--wd-navy-text))]/40 focus:outline-none focus:border-[hsl(var(--wd-blue))] focus:ring-1 focus:ring-[hsl(var(--wd-blue))]/20 transition-colors duration-200 text-body";
   const labelClass = "text-overline text-[hsl(var(--wd-navy-text))]/55 block mb-2";
 
   return (
@@ -81,7 +81,7 @@ const Contact = () => {
         canonical="/contact/"
       />
 
-      <section className="bg-wd-navy py-20 md:py-28">
+      <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
         <div className="container">
           <ScrollReveal>
             <span className="text-overline text-primary mb-4 block">Get in touch</span>

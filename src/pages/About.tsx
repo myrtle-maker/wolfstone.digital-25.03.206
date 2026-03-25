@@ -62,7 +62,7 @@ const About = () => {
         jsonLd={jsonLd}
       />
 
-      <section className="bg-[hsl(var(--wd-navy))] py-20 md:py-28">
+      <section className="bg-[hsl(var(--wd-navy))] wd-ambient-glow py-20 md:py-28">
         <div className="container">
           <ScrollReveal>
             <span className="text-overline text-primary mb-4 block">About us</span>

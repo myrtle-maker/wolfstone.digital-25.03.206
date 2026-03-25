@@ -37,7 +37,7 @@ const SEOPage = () => (
   <main className="pt-20">
     <SEOHead title="AI SEO Consultancy UK | Technical Audits & Enterprise SEO | Wolfstone Digital" description="Technical SEO audits, on-page optimisation, off-page strategy & AI search readiness. Built for regulated industries. Free audit available." canonical="/services/seo/" jsonLd={jsonLd} />
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <Breadcrumbs items={[{ label: "Services", path: "/services" }, { label: "SEO" }]} />
         <ScrollReveal><span className="text-overline text-primary mb-4 block">SEO services</span></ScrollReveal>
@@ -64,13 +64,13 @@ const SEOPage = () => (
       </div>
     </section>
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <ScrollReveal><span className="text-overline text-primary mb-4 block">Our process</span><h2 className="text-h1 mb-12">Our technical SEO audit process</h2></ScrollReveal>
         <div className="space-y-6">
           {auditSteps.map((step, i) => (
             <ScrollReveal key={step.num} delay={i * 0.07}>
-              <div className="bg-card border border-primary/[0.15] rounded-[12px] p-6 md:p-8 hover:border-primary/[0.45] transition-colors duration-200 flex gap-6 items-start">
+              <div className="wd-glow-card p-6 md:p-8 transition-colors duration-200 flex gap-6 items-start">
                 <span className="text-[2.5rem] font-black text-primary/20 leading-none shrink-0">{step.num}</span>
                 <div><h3 className="text-h3 mb-2">{step.title}</h3><p className="text-body text-wd-muted">{step.desc}</p></div>
               </div>
@@ -102,7 +102,7 @@ const SEOPage = () => (
                   { value: "100x", label: "Outperforming bigger budgets" },
                   { value: "5", label: "AI platforms citing us" },
                 ].map((s) => (
-                  <div key={s.label} className="bg-card border border-primary/[0.15] rounded-[12px] p-5 text-center">
+                  <div key={s.label} className="wd-glow-card p-5 text-center">
                     <div className="text-[clamp(1.75rem,3vw,2.5rem)] font-black leading-none text-accent mb-2">{s.value}</div>
                     <div className="text-overline text-wd-muted">{s.label}</div>
                   </div>

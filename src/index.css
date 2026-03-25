@@ -6,61 +6,66 @@
 
 @layer base {
   :root {
-    --background: 216 56% 12%;
-    --foreground: 0 0% 100%;
+    --background: 220 50% 6%;
+    --foreground: 0 0% 96%;
 
-    --card: 222 68% 21%;
-    --card-foreground: 0 0% 100%;
+    --card: 222 45% 10%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 222 68% 21%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 222 45% 10%;
+    --popover-foreground: 0 0% 96%;
 
     --primary: 190 100% 45%;
-    --primary-foreground: 216 56% 12%;
+    --primary-foreground: 220 50% 6%;
 
-    --secondary: 222 68% 21%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 222 40% 14%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 210 50% 20%;
-    --muted-foreground: 207 54% 77%;
+    --muted: 220 40% 14%;
+    --muted-foreground: 210 30% 70%;
 
     --accent: 190 100% 61%;
-    --accent-foreground: 216 56% 12%;
+    --accent-foreground: 220 50% 6%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 190 100% 45% / 0.15;
-    --input: 190 100% 45% / 0.2;
+    --border: 0 0% 100% / 0.06;
+    --input: 0 0% 100% / 0.08;
     --ring: 190 100% 45%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    /* Wolfstone custom tokens */
-    --wd-navy: 216 56% 12%;
-    --wd-midnight: 222 68% 21%;
+    /* Wolfstone custom tokens — modernized depths */
+    --wd-navy: 220 50% 6%;
+    --wd-navy-mid: 220 48% 9%;
+    --wd-midnight: 222 40% 14%;
     --wd-blue: 210 70% 36%;
     --wd-cyan: 190 100% 45%;
     --wd-cyan-bright: 190 100% 61%;
     --wd-ice: 222 33% 93%;
     --wd-white: 0 0% 100%;
-    --wd-muted-text: 210 30% 86%;
+    --wd-muted-text: 210 25% 68%;
     --wd-gold: 38 70% 50%;
     --wd-gold-dark: 38 65% 38%;
 
-    /* Light palette — cool blue-grey tones inspired by TIC */
-    --wd-cream: 216 20% 97%;
-    --wd-stone: 216 16% 93%;
-    --wd-warm-grey: 216 12% 85%;
-    --wd-navy-text: 216 56% 15%;
+    /* Light palette — cool blue-grey tones */
+    --wd-cream: 220 20% 97%;
+    --wd-stone: 220 16% 93%;
+    --wd-warm-grey: 220 12% 85%;
+    --wd-navy-text: 220 50% 12%;
 
-    --sidebar-background: 216 56% 12%;
-    --sidebar-foreground: 0 0% 100%;
+    /* Glow tokens */
+    --wd-glow-cyan: 190 100% 45%;
+    --wd-glow-gold: 38 70% 50%;
+
+    --sidebar-background: 220 50% 6%;
+    --sidebar-foreground: 0 0% 96%;
     --sidebar-primary: 190 100% 45%;
-    --sidebar-primary-foreground: 216 56% 12%;
-    --sidebar-accent: 222 68% 21%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 190 100% 45% / 0.15;
+    --sidebar-primary-foreground: 220 50% 6%;
+    --sidebar-accent: 222 40% 14%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 0 0% 100% / 0.06;
     --sidebar-ring: 190 100% 45%;
   }
 }
@@ -141,6 +146,160 @@
   .max-ch-70 {
     max-width: 70ch;
   }
+}
+
+/* ── Modernized surface system ─────────────────────────── */
+
+/* Ambient glow card — radial corner highlight */
+.wd-glow-card {
+  position: relative;
+  background: hsl(var(--card));
+  border: 1px solid hsl(0 0% 100% / 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.3s ease-out, box-shadow 0.3s ease-out, transform 0.3s ease-out;
+}
+.wd-glow-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at top left,
+    hsl(var(--wd-glow-cyan) / 0.08),
+    transparent 60%
+  );
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+.wd-glow-card:hover {
+  border-color: hsl(var(--primary) / 0.2);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px hsl(var(--primary) / 0.05),
+    0 4px 12px hsl(0 0% 0% / 0.3),
+    0 16px 40px hsl(0 0% 0% / 0.2);
+}
+.wd-glow-card:hover::before {
+  opacity: 1.4;
+}
+
+/* Gold-tinted glow variant */
+.wd-glow-card-gold::before {
+  background: radial-gradient(
+    ellipse at top right,
+    hsl(var(--wd-glow-gold) / 0.06),
+    transparent 60%
+  );
+}
+
+/* Glassmorphism surface */
+.wd-glass {
+  background: hsl(var(--wd-navy) / 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid hsl(0 0% 100% / 0.05);
+}
+
+/* Progressive layered shadow */
+.wd-shadow-layered {
+  box-shadow:
+    0 0 0 1px hsl(0 0% 0% / 0.03),
+    0 1px 1px -0.5px hsl(0 0% 0% / 0.03),
+    0 3px 3px -1.5px hsl(0 0% 0% / 0.03),
+    0 6px 6px -3px hsl(0 0% 0% / 0.04),
+    0 12px 12px -6px hsl(0 0% 0% / 0.05),
+    0 24px 24px -12px hsl(0 0% 0% / 0.06);
+}
+
+/* Section gradient transitions — replaces hard background cuts */
+.wd-section-fade-down {
+  position: relative;
+}
+.wd-section-fade-down::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, hsl(var(--wd-navy)));
+  pointer-events: none;
+}
+
+.wd-section-fade-up {
+  position: relative;
+}
+.wd-section-fade-up::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, transparent, hsl(var(--wd-navy)));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Light-to-dark transition */
+.wd-fade-light-to-dark::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, hsl(var(--wd-navy)));
+  pointer-events: none;
+}
+
+/* Dark-to-light transition */
+.wd-fade-dark-to-light::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, hsl(var(--wd-cream)));
+  pointer-events: none;
+}
+
+/* Light card on light backgrounds — modernized */
+.wd-card-light {
+  background: white;
+  border: 1px solid hsl(var(--wd-warm-grey) / 0.5);
+  border-radius: 16px;
+  transition: border-color 0.3s ease-out, box-shadow 0.3s ease-out, transform 0.3s ease-out;
+}
+.wd-card-light:hover {
+  border-color: hsl(var(--wd-blue) / 0.25);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px hsl(var(--wd-blue) / 0.04),
+    0 4px 12px hsl(220 50% 6% / 0.06),
+    0 16px 40px hsl(220 50% 6% / 0.04);
+}
+
+/* Ambient background glow — for hero sections */
+.wd-ambient-glow {
+  position: relative;
+  overflow: hidden;
+}
+.wd-ambient-glow::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 60%;
+  background: radial-gradient(
+    ellipse,
+    hsl(var(--wd-glow-cyan) / 0.06),
+    transparent 70%
+  );
+  pointer-events: none;
 }
 
 /* Subtle cross-hatch texture for light sections */

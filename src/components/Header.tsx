@@ -57,10 +57,10 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
         scrolled
-          ? "bg-wd-navy/95 backdrop-blur-md border-b border-primary/10 shadow-lg"
-          : "bg-wd-navy"
+          ? "bg-[hsl(220_50%_6%/0.7)] backdrop-blur-xl border-b border-white/[0.05] shadow-glow"
+          : "bg-transparent"
       }`}
     >
       <div className="container flex items-center justify-between h-20 md:h-24">
@@ -97,7 +97,7 @@ const Header = () => {
 
               {link.children && (
                 <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="bg-card border border-primary/20 rounded-[12px] p-2 min-w-[240px] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+                  <div className="bg-[hsl(222_40%_10%/0.85)] backdrop-blur-xl border border-white/[0.08] rounded-[16px] p-2 min-w-[240px] shadow-glow">
                     {link.children.map((child) => (
                       <Link
                         key={child.path}
@@ -132,7 +132,7 @@ const Header = () => {
       </div>
 
       {isOpen && (
-        <div className="lg:hidden bg-wd-navy/98 backdrop-blur-md border-t border-primary/10 max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden bg-[hsl(220_50%_6%/0.95)] backdrop-blur-xl border-t border-white/[0.05] max-h-[80vh] overflow-y-auto">
           <nav className="container flex flex-col py-6 gap-2">
             {navLinks.map((link) => (
               <div key={link.path}>

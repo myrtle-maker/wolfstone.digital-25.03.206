@@ -37,7 +37,7 @@ const FinancialServicesPage = () => (
   <main className="pt-20">
     <SEOHead title="AI SEO for Financial Services | Fintech & Finance Marketing | Wolfstone Digital" description="Specialist AI SEO and GEO for financial services. FCA-compliant marketing for brokers, fintechs & financial brands. Founded by financial services professionals." canonical="/industries/financial-services/" jsonLd={jsonLd} />
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <Breadcrumbs items={[{ label: "Industries", path: "/industries/financial-services" }, { label: "Financial services" }]} />
         <ScrollReveal><span className="text-overline text-primary mb-4 block">Financial services</span></ScrollReveal>
@@ -71,7 +71,7 @@ const FinancialServicesPage = () => (
       </div>
     </section>
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <ScrollReveal><h2 className="text-h1 mb-6">Our financial services experience</h2></ScrollReveal>
         <ScrollReveal delay={0.1}>
@@ -103,7 +103,7 @@ const FinancialServicesPage = () => (
             { value: "0", label: "Paid placements" },
           ].map((s, i) => (
             <ScrollReveal key={i} delay={i * 0.06}>
-              <div className="bg-card border border-primary/[0.15] rounded-[12px] p-5 text-center">
+              <div className="wd-glow-card p-5 text-center">
                 <div className="text-[clamp(1.5rem,2.5vw,2rem)] font-black leading-none text-accent mb-2">{s.value}</div>
                 <div className="text-overline text-wd-muted">{s.label}</div>
               </div>
@@ -116,13 +116,13 @@ const FinancialServicesPage = () => (
       </div>
     </section>
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <ScrollReveal><h2 className="text-h1 mb-10">Services for financial brands</h2></ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <ScrollReveal key={s.path} delay={i * 0.06}>
-              <Link to={s.path} className="block bg-card border border-primary/[0.15] rounded-[12px] p-6 hover:border-primary/[0.45] transition-colors h-full group">
+              <Link to={s.path} className="block wd-glow-card p-6 transition-colors h-full group">
                 <s.icon className="w-8 h-8 text-primary mb-4" />
                 <h3 className="text-h3 mb-2">{s.title}</h3>
                 <p className="text-body-sm text-wd-muted">{s.desc}</p>

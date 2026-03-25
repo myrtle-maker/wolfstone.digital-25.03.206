@@ -37,7 +37,7 @@ const GEOPage = () => (
   <main className="pt-20">
     <SEOHead title="Generative Engine Optimisation (GEO) UK | Wolfstone Digital" description="Get your brand cited by ChatGPT, Gemini, Perplexity & Google AI. We built the most AI-cited independent finance source on the internet. GEO that works." canonical="/services/geo/" jsonLd={jsonLd} />
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <Breadcrumbs items={[{ label: "Services", path: "/services" }, { label: "GEO" }]} />
         <ScrollReveal><span className="text-overline text-primary mb-4 block">GEO services</span></ScrollReveal>
@@ -83,7 +83,7 @@ const GEOPage = () => (
       </div>
     </section>
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <ScrollReveal><h2 className="text-h1 mb-10">Why GEO matters in 2026</h2></ScrollReveal>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
@@ -94,7 +94,7 @@ const GEOPage = () => (
             { value: "77%", label: "Use ChatGPT as a search engine" },
           ].map((s, i) => (
             <ScrollReveal key={i} delay={i * 0.07}>
-              <div className="bg-card border border-primary/[0.15] rounded-[12px] p-5 text-center">
+              <div className="wd-glow-card p-5 text-center">
                 <div className="text-[clamp(1.75rem,3vw,2.5rem)] font-black leading-none text-accent mb-2">{s.value}</div>
                 <div className="text-overline text-wd-muted">{s.label}</div>
               </div>
@@ -125,7 +125,7 @@ const GEOPage = () => (
             { title: "Cross-platform strategy", desc: "ChatGPT, Gemini, Perplexity, Copilot, and Claude each have different retrieval methods. We optimise for all five simultaneously." },
           ].map((item, i) => (
             <ScrollReveal key={i} delay={i * 0.08}>
-              <div className="bg-card border border-primary/[0.15] rounded-[12px] p-6 hover:border-primary/[0.45] transition-colors duration-200 h-full">
+              <div className="wd-glow-card p-6 transition-colors duration-200 h-full">
                 <h3 className="text-h3 mb-3">{item.title}</h3>
                 <p className="text-body-sm text-wd-muted">{item.desc}</p>
               </div>
@@ -135,7 +135,7 @@ const GEOPage = () => (
       </div>
     </section>
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <ScrollReveal>
           <h2 className="text-h1 mb-6">Our GEO results</h2>
@@ -152,7 +152,7 @@ const GEOPage = () => (
             { value: "0", label: "Paid placements" },
           ].map((s, i) => (
             <ScrollReveal key={i} delay={i * 0.06}>
-              <div className="bg-card border border-primary/[0.15] rounded-[12px] p-5 text-center">
+              <div className="wd-glow-card p-5 text-center">
                 <div className="text-[clamp(1.5rem,2.5vw,2rem)] font-black leading-none text-accent mb-2">{s.value}</div>
                 <div className="text-overline text-wd-muted">{s.label}</div>
               </div>

@@ -21,9 +21,9 @@ const FAQSection = ({ faqs, dark = false }: { faqs: FAQ[]; dark?: boolean }) => 
                 value={`faq-${i}`}
                 className={`${
                   dark
-                    ? "bg-card border-primary/[0.15] data-[state=open]:border-l-primary data-[state=open]:border-l-2"
+                    ? "bg-card border-white/[0.06] data-[state=open]:border-l-primary data-[state=open]:border-l-2"
                     : "bg-white border-[hsl(var(--wd-warm-grey))] data-[state=open]:border-l-[hsl(var(--wd-blue))] data-[state=open]:border-l-2"
-                } border rounded-[12px] px-6 transition-all duration-300`}
+                } border rounded-[16px] px-6 transition-all duration-300`}
               >
                 <AccordionTrigger className={`text-left text-h3 hover:no-underline py-5 font-bold`} style={{ color: dark ? 'white' : 'hsl(216, 56%, 15%)' }}>
                   {faq.question}

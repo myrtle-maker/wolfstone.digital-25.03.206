@@ -28,7 +28,7 @@ const LLMBrandExposurePage = () => (
   <main className="pt-20">
     <SEOHead title="LLM Brand Exposure | Get Cited by ChatGPT, Gemini & AI | Wolfstone Digital" description="Proprietary tactics to get your brand recommended by LLMs. We built the most AI-cited independent finance source on the internet. Now we deploy the same methodology for partners." canonical="/services/llm-brand-exposure/" jsonLd={jsonLd} />
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <Breadcrumbs items={[{ label: "Services", path: "/services" }, { label: "LLM brand exposure" }]} />
         <ScrollReveal><span className="text-overline text-primary mb-4 block">LLM brand exposure</span></ScrollReveal>
@@ -66,7 +66,7 @@ const LLMBrandExposurePage = () => (
       </div>
     </section>
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <ScrollReveal><h2 className="text-h1 mb-6">Why most brands are invisible to AI</h2></ScrollReveal>
         <ScrollReveal delay={0.1}>
@@ -76,7 +76,7 @@ const LLMBrandExposurePage = () => (
               { title: "Missing entity signals", desc: "AI models decide which brands to cite based on entity authority signals. Most brands don't have these signals, so they're never recommended." },
               { title: "Platform-blind strategy", desc: "ChatGPT, Gemini, and Perplexity each use different retrieval methods. Optimising for one doesn't mean you're visible on others." },
             ].map((item, i) => (
-              <div key={i} className="bg-card border border-primary/[0.15] rounded-[12px] p-6 h-full">
+              <div key={i} className="wd-glow-card p-6 h-full">
                 <h3 className="text-h3 mb-3">{item.title}</h3>
                 <p className="text-body-sm text-wd-muted">{item.desc}</p>
               </div>
@@ -102,7 +102,7 @@ const LLMBrandExposurePage = () => (
             { icon: BarChart3, title: "AI share of voice tracking", desc: "Weekly measurement of citation rates, recommendation frequency, and competitive position." },
           ].map((item, i) => (
             <ScrollReveal key={i} delay={i * 0.08}>
-              <div className="bg-card border border-primary/[0.15] rounded-[12px] p-6 hover:border-primary/[0.45] transition-colors duration-200 h-full">
+              <div className="wd-glow-card p-6 transition-colors duration-200 h-full">
                 <item.icon className="w-8 h-8 text-primary mb-4" />
                 <h3 className="text-h3 mb-2">{item.title}</h3>
                 <p className="text-body-sm text-wd-muted">{item.desc}</p>
@@ -113,7 +113,7 @@ const LLMBrandExposurePage = () => (
       </div>
     </section>
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <ScrollReveal>
           <h2 className="text-h1 mb-6">AI share of voice: the new metric</h2>
@@ -141,7 +141,7 @@ const LLMBrandExposurePage = () => (
             { value: "0", label: "Paid placements" },
           ].map((s, i) => (
             <ScrollReveal key={i} delay={i * 0.06}>
-              <div className="bg-card border border-primary/[0.15] rounded-[12px] p-5">
+              <div className="wd-glow-card p-5">
                 <div className="text-[clamp(1.5rem,2.5vw,2rem)] font-black leading-none text-accent mb-2">{s.value}</div>
                 <div className="text-overline text-wd-muted">{s.label}</div>
               </div>

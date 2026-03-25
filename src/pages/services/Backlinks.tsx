@@ -27,7 +27,7 @@ const BacklinksPage = () => (
   <main className="pt-20">
     <SEOHead title="Premium Link Building UK | Backlink Acquisition | Wolfstone Digital" description="Market-leading backlink inventory with premium placements competitors can't access. High-quality link building for enterprise brands." canonical="/services/backlinks/" jsonLd={jsonLd} />
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <Breadcrumbs items={[{ label: "Services", path: "/services" }, { label: "Backlinks" }]} />
         <ScrollReveal><span className="text-overline text-primary mb-4 block">Backlink acquisition</span></ScrollReveal>

@@ -27,7 +27,7 @@ const DigitalPRPage = () => (
   <main className="pt-20">
     <SEOHead title="Digital PR UK | Earned Media & Brand Authority | Wolfstone Digital" description="Strategic digital PR for enterprise brands. Earned media, authority building & scalable PR. Built for regulated industries." canonical="/services/digital-pr/" jsonLd={jsonLd} />
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <Breadcrumbs items={[{ label: "Services", path: "/services" }, { label: "Digital PR" }]} />
         <ScrollReveal><span className="text-overline text-primary mb-4 block">Digital PR</span></ScrollReveal>
@@ -77,7 +77,7 @@ const DigitalPRPage = () => (
             { icon: Megaphone, title: "Social media & community", path: "/services/social-media/", desc: "Amplify PR campaigns across social channels." },
           ].map((s, i) => (
             <ScrollReveal key={s.path} delay={i * 0.07}>
-              <Link to={s.path} className="block bg-card border border-primary/[0.15] rounded-[12px] p-6 hover:border-primary/[0.45] transition-colors h-full group">
+              <Link to={s.path} className="block wd-glow-card p-6 transition-colors h-full group">
                 <s.icon className="w-8 h-8 text-primary mb-4" />
                 <h3 className="text-h3 mb-2">{s.title}</h3>
                 <p className="text-body-sm text-wd-muted">{s.desc}</p>

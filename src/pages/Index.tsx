@@ -138,24 +138,24 @@ const Index = () => {
 
             <form onSubmit={handleHeroSubmit} className="max-w-xl mb-8 md:mb-10">
               <div className="flex flex-col sm:flex-row gap-3 mb-3">
-                <input type="text" value={heroBrand} onChange={(e) => setHeroBrand(e.target.value)} placeholder="Enter your brand name" className="flex-1 rounded-md bg-[hsl(var(--wd-navy))] border border-[hsl(var(--wd-navy))]/80 text-white placeholder:text-white/40 px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/30 transition-colors" required />
-                <input type="text" value={heroWebsite} onChange={(e) => setHeroWebsite(e.target.value)} placeholder="Website (optional)" className="sm:w-44 rounded-md bg-[hsl(var(--wd-navy))] border border-[hsl(var(--wd-navy))]/80 text-white placeholder:text-white/40 px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/30 transition-colors" />
+                <input type="text" value={heroBrand} onChange={(e) => setHeroBrand(e.target.value)} placeholder="Enter your brand name" className="flex-1 rounded-[12px] bg-[hsl(220_50%_6%/0.8)] backdrop-blur-sm border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all" required />
+                <input type="text" value={heroWebsite} onChange={(e) => setHeroWebsite(e.target.value)} placeholder="Website (optional)" className="sm:w-44 rounded-[12px] bg-[hsl(220_50%_6%/0.8)] backdrop-blur-sm border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all" />
               </div>
               <div className="relative mb-3">
                 <textarea
                   value={heroPrompt}
                   onChange={(e) => setHeroPrompt(e.target.value)}
                   placeholder='Test a prompt, e.g. "What are the best investment platforms in the UK?"'
-                  className="w-full rounded-md bg-[hsl(var(--wd-navy))] border border-[hsl(var(--wd-navy))]/80 text-white placeholder:text-white/40 px-5 py-3 text-[15px] focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/30 transition-colors resize-none min-h-[52px]"
+                  className="w-full rounded-[12px] bg-[hsl(220_50%_6%/0.8)] backdrop-blur-sm border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all resize-none min-h-[52px]"
                   maxLength={500}
                   rows={1}
                 />
               </div>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-                <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-md bg-[hsl(var(--wd-blue))] text-white text-[13px] font-bold tracking-[0.05em] uppercase px-6 py-3.5 hover:bg-[hsl(var(--wd-navy))] transition-colors duration-200 active:scale-[0.97] whitespace-nowrap">
+                <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-primary text-primary-foreground text-[13px] font-bold tracking-[0.05em] uppercase px-6 py-3.5 hover:bg-accent hover:shadow-glow-cyan transition-all duration-300 active:scale-[0.97] whitespace-nowrap">
                   {heroPrompt.trim() ? "Test prompt" : "Check AI visibility"} <ArrowRight size={16} />
                 </button>
-                <Link to="/contact" className="inline-flex items-center justify-center gap-2 rounded-md border border-[hsl(var(--wd-navy-text))]/20 text-[hsl(var(--wd-navy-text))] text-[13px] font-bold tracking-[0.05em] uppercase px-6 py-3.5 hover:border-[hsl(var(--wd-blue))]/50 hover:text-[hsl(var(--wd-blue))] transition-colors duration-200 active:scale-[0.97] whitespace-nowrap">
+                <Link to="/contact" className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-[hsl(var(--wd-navy-text))]/15 text-[hsl(var(--wd-navy-text))] text-[13px] font-bold tracking-[0.05em] uppercase px-6 py-3.5 hover:border-[hsl(var(--wd-blue))]/40 hover:text-[hsl(var(--wd-blue))] transition-all duration-300 active:scale-[0.97] whitespace-nowrap">
                   Book a consultation
                 </Link>
               </div>
@@ -167,7 +167,7 @@ const Index = () => {
       </section>
 
       {/* ═══════ METHOD STRIP (DARK) ═══════ */}
-      <section className="bg-[hsl(var(--wd-midnight))] py-12 md:py-14 border-y border-white/[0.06]">
+      <section className="bg-[hsl(var(--wd-navy-mid))] py-12 md:py-14 border-y border-white/[0.04]">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
@@ -213,7 +213,7 @@ const Index = () => {
               { icon: BarChart3, title: "Operators, not advisors", desc: "We compete daily in the same regulated markets our clients operate in. No other agency can say that." },
             ].map((item, i) => (
               <ScrollReveal key={item.title} delay={i * 0.08}>
-                <div className="bg-[hsl(var(--wd-stone))] border border-[hsl(var(--wd-warm-grey))]/60 rounded-[12px] p-10 hover:shadow-md hover:border-[hsl(var(--wd-blue))]/30 transition-all duration-200 h-full">
+                <div className="wd-card-light p-10 h-full">
                   <item.icon className="w-8 h-8 text-[hsl(var(--wd-blue))] mb-5" />
                   {item.stat && (
                     <div className="mb-4">
@@ -242,9 +242,7 @@ const Index = () => {
               <ScrollReveal key={s.path} delay={i * 0.06}>
                 <Link
                   to={s.path}
-                  className="block bg-white border border-[hsl(var(--wd-warm-grey))]/60 rounded-[12px] p-7 h-full group
-                    hover:border-[hsl(var(--wd-blue))]/30 hover:-translate-y-1 hover:shadow-md
-                    transition-all duration-300 ease-out"
+                  className="block wd-card-light p-7 h-full group"
                 >
                   <s.icon className="w-7 h-7 text-[hsl(var(--wd-blue))] mb-5 group-hover:scale-110 transition-transform duration-300" />
                   <h3 className="text-h3 text-[hsl(var(--wd-navy-text))] mb-3">{s.title}</h3>
@@ -277,7 +275,7 @@ const Index = () => {
               <ScrollReveal key={card.path} delay={i * 0.08}>
                 <Link
                   to={card.path}
-                  className="group block bg-white border border-[hsl(var(--wd-warm-grey))]/60 rounded-[12px] overflow-hidden hover:shadow-lg hover:border-[hsl(var(--wd-blue))]/30 transition-all duration-300"
+                  className="group block wd-card-light overflow-hidden"
                 >
                   <div className="aspect-[16/9] overflow-hidden">
                     <img src={card.image} alt={card.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -308,7 +306,7 @@ const Index = () => {
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="mb-16 overflow-hidden rounded-[16px] bg-[hsl(var(--wd-stone))] border border-[hsl(var(--wd-warm-grey))]/60 py-10">
+            <div className="mb-16 overflow-hidden rounded-[16px] bg-white border border-[hsl(var(--wd-warm-grey))]/40 py-10 shadow-glow">
               <div className="animate-logo-scroll flex items-center gap-16 md:gap-24 w-max">
                 {[...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos].map((client, i) => (
                   <img key={`${client.name}-${i}`} src={client.logo} alt={`${client.name} logo`} loading="lazy" className="h-12 md:h-16 w-auto object-contain opacity-60 hover:opacity-100 hover:scale-105 transition-all duration-300 shrink-0" />
@@ -324,7 +322,7 @@ const Index = () => {
               { stat: "#1", desc: "Most AI-cited independent source amongst our competitors — earned through the methodology we now offer to clients" },
             ].map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="bg-[hsl(var(--wd-stone))] border border-[hsl(var(--wd-warm-grey))]/60 rounded-[12px] p-10 text-center hover:shadow-md hover:border-[hsl(var(--wd-blue))]/30 transition-all duration-200">
+                <div className="wd-card-light p-10 text-center">
                   <div className="text-[clamp(1.75rem,3vw,2.5rem)] font-black text-[hsl(var(--wd-blue))] leading-none mb-4">{item.stat}</div>
                   <p className="text-body text-[hsl(var(--wd-navy-text))]/55">{item.desc}</p>
                 </div>
@@ -335,7 +333,7 @@ const Index = () => {
       </section>
 
       {/* ═══════ TESTIMONIALS (DARK) ═══════ */}
-      <section className="bg-[hsl(var(--wd-navy))] py-16 md:py-36 relative overflow-hidden">
+      <section className="bg-wd-navy wd-ambient-glow py-16 md:py-36 relative overflow-hidden">
         <LogoTexture opacity={0.015} density="sparse" />
         <div className="container relative z-10">
           <ScrollReveal>
@@ -361,7 +359,7 @@ const Index = () => {
               },
             ].map((t, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="bg-white/[0.04] border border-white/[0.08] rounded-[12px] p-8 h-full flex flex-col">
+                <div className="wd-glow-card p-8 h-full flex flex-col">
                   <div className="text-[hsl(var(--wd-gold))] text-3xl font-black mb-4 leading-none">"</div>
                   <p className="text-body-sm text-white/75 mb-6 flex-1 italic">{t.quote}</p>
                   <div className="border-t border-white/[0.08] pt-4">
@@ -442,7 +440,7 @@ const Index = () => {
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ScrollReveal>
-              <Link to="/tools/ai-visibility-checker" className="block bg-[hsl(var(--wd-stone))] border border-[hsl(var(--wd-warm-grey))]/60 rounded-[12px] p-10 hover:shadow-md hover:border-[hsl(var(--wd-blue))]/30 transition-all duration-200 h-full group">
+              <Link to="/tools/ai-visibility-checker" className="block wd-card-light p-10 h-full group">
                 <Brain className="w-10 h-10 text-[hsl(var(--wd-blue))] mb-5" />
                 <h3 className="text-h2 text-[hsl(var(--wd-navy-text))] mb-4">AI visibility audit</h3>
                 <p className="text-body text-[hsl(var(--wd-navy-text))]/55 mb-8">Find out if your brand is being cited by ChatGPT, Gemini, Perplexity, Copilot & Claude. See your score across all 5 platforms.</p>
@@ -452,7 +450,7 @@ const Index = () => {
               </Link>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <Link to="/tools/backlink-checker" className="block bg-[hsl(var(--wd-stone))] border border-[hsl(var(--wd-warm-grey))]/60 rounded-[12px] p-10 hover:shadow-md hover:border-[hsl(var(--wd-blue))]/30 transition-all duration-200 h-full group">
+              <Link to="/tools/backlink-checker" className="block wd-card-light p-10 h-full group">
                 <Link2 className="w-10 h-10 text-[hsl(var(--wd-blue))] mb-5" />
                 <h3 className="text-h2 text-[hsl(var(--wd-navy-text))] mb-4">Backlink value checker</h3>
                 <p className="text-body text-[hsl(var(--wd-navy-text))]/55 mb-8">Paste any URL to get an instant AI analysis of its backlink value — domain authority, spam risk, content quality, and estimated link worth.</p>

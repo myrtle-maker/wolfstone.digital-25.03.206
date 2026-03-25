@@ -15,7 +15,7 @@ const CTASection = ({
   buttonText = "Book a consultation",
   buttonLink = "/contact",
 }: CTASectionProps) => (
-  <section className="bg-wd-navy py-20 md:py-28 relative overflow-hidden border-t-2 border-[hsl(var(--wd-gold))]">
+  <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28 relative overflow-hidden border-t-2 border-[hsl(var(--wd-gold))]">
     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--wd-gold))]/5 to-transparent" />
     <div className="container relative z-10 text-center">
       <ScrollReveal>
@@ -26,10 +26,10 @@ const CTASection = ({
       </ScrollReveal>
       <ScrollReveal delay={0.2}>
         <div className="flex flex-wrap justify-center gap-4">
-          <Link to={buttonLink} className="inline-flex items-center gap-2 rounded-md bg-[hsl(var(--wd-gold))] text-white text-[13px] font-bold tracking-[0.05em] uppercase px-8 py-4 hover:bg-[hsl(var(--wd-gold-dark))] transition-colors duration-200 active:scale-[0.97]">
+          <Link to={buttonLink} className="inline-flex items-center gap-2 rounded-[12px] bg-[hsl(var(--wd-gold))] text-white text-[13px] font-bold tracking-[0.05em] uppercase px-8 py-4 hover:bg-[hsl(var(--wd-gold-dark))] transition-all duration-300 active:scale-[0.97]">
             {buttonText} <ArrowRight size={16} />
           </Link>
-          <Link to="/tools/ai-visibility-checker" className="inline-flex items-center gap-2 rounded-md border-[1.5px] border-[hsl(var(--wd-gold))]/60 text-[hsl(var(--wd-gold))] text-[13px] font-bold tracking-[0.05em] uppercase px-8 py-4 hover:bg-[hsl(var(--wd-gold))]/[0.08] transition-colors duration-200 active:scale-[0.97]">
+          <Link to="/tools/ai-visibility-checker" className="inline-flex items-center gap-2 rounded-[12px] border-[1.5px] border-[hsl(var(--wd-gold))]/60 text-[hsl(var(--wd-gold))] text-[13px] font-bold tracking-[0.05em] uppercase px-8 py-4 hover:bg-[hsl(var(--wd-gold))]/[0.08] transition-all duration-300 active:scale-[0.97]">
             Free AI audit <ArrowRight size={16} />
           </Link>
         </div>

@@ -377,7 +377,7 @@ const LlmChecker = () => {
       />
 
       {/* ═══════ HERO ═══════ */}
-      <section className="bg-wd-navy py-20 md:py-28 relative overflow-hidden">
+      <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28 relative overflow-hidden">
         <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[100px]" />
         <div className="container relative z-10">
           <ScrollReveal><span className="text-overline text-primary mb-4 block">Free tools</span></ScrollReveal>
@@ -619,7 +619,7 @@ const LlmChecker = () => {
                       { label: "Not found", value: promptResult.results.filter(r => r.status === "absent").length, icon: EyeOff, accent: "text-red-400" },
                     ].map((stat, i) => (
                       <ScrollReveal key={stat.label} delay={i * 0.08}>
-                        <div className="bg-card border border-primary/[0.15] rounded-[12px] p-6 text-center">
+                        <div className="wd-glow-card p-6 text-center">
                           <stat.icon className={`w-8 h-8 ${stat.accent} mx-auto mb-3`} />
                           <div className={`text-[2.5rem] font-black leading-none mb-1 ${stat.accent}`}>{stat.value}</div>
                           <p className="text-overline text-wd-muted">{stat.label}</p>
@@ -701,7 +701,7 @@ const LlmChecker = () => {
 
               {/* Bar chart */}
               <ScrollReveal delay={0.1}>
-                <div className="bg-card border border-primary/[0.15] rounded-[12px] p-6 md:p-8 mb-8">
+                <div className="wd-glow-card p-6 md:p-8 mb-8">
                   <ResponsiveContainer width="100%" height={280}>
                     <BarChart data={result.platforms.map(p => ({ name: p.name, score: p.score }))} barSize={40}>
                       <CartesianGrid strokeDasharray="3 3" stroke="hsl(190, 100%, 45%, 0.08)" />
@@ -862,7 +862,7 @@ const LlmChecker = () => {
                           ))}
                         </div>
                       </div>
-                      <div className="bg-card border border-primary/[0.15] rounded-[12px] p-6">
+                      <div className="wd-glow-card p-6">
                         <ResponsiveContainer width="100%" height={320}>
                           <RadarChart data={result.platforms.map(p => ({ platform: p.name, score: p.score }))}>
                             <PolarGrid stroke="hsl(190, 100%, 45%, 0.12)" />
@@ -944,7 +944,7 @@ const LlmChecker = () => {
                       const pcfg = priorityConfig[rec.priority];
                       return (
                         <ScrollReveal key={i} delay={i * 0.06}>
-                          <div className="bg-card border border-primary/[0.15] rounded-[12px] p-6 hover:border-primary/[0.45] transition-colors duration-200 group">
+                          <div className="wd-glow-card p-6 transition-colors duration-200 group">
                             <div className="flex items-start gap-4">
                               <div className="flex flex-col items-center gap-1.5 shrink-0">
                                 <span className={`text-[1.75rem] font-black leading-none ${pcfg.color}`}>{String(i + 1).padStart(2, "0")}</span>
@@ -963,7 +963,7 @@ const LlmChecker = () => {
                   </div>
                   {result.competitorContext && (
                     <ScrollReveal delay={0.2}>
-                      <div className="mt-8 bg-card border border-primary/[0.15] rounded-[12px] p-6">
+                      <div className="mt-8 wd-glow-card p-6">
                         <div className="flex items-center gap-2 mb-3">
                           <Target className="w-5 h-5 text-primary" />
                           <h4 className="text-h3 text-primary">Competitive context</h4>
@@ -1019,7 +1019,7 @@ const LlmChecker = () => {
                 { icon: Zap, title: "Competitive position", desc: "How does your AI visibility compare to competitors?" },
               ].map((item, i) => (
                 <ScrollReveal key={item.title} delay={i * 0.08}>
-                  <div className="bg-card border border-primary/[0.15] rounded-[12px] p-6 hover:border-primary/[0.45] transition-colors duration-200 h-full">
+                  <div className="wd-glow-card p-6 transition-colors duration-200 h-full">
                     <item.icon className="w-8 h-8 text-primary mb-4" />
                     <h3 className="text-h3 mb-2">{item.title}</h3>
                     <p className="text-body-sm text-wd-muted">{item.desc}</p>
@@ -1048,7 +1048,7 @@ const LlmChecker = () => {
                 { icon: EyeOff, title: "Absent", desc: "Your brand doesn't appear at all — a gap that competitors may be filling.", color: "text-red-400" },
               ].map((item, i) => (
                 <ScrollReveal key={item.title} delay={i * 0.08}>
-                  <div className="bg-card border border-primary/[0.15] rounded-[12px] p-6 hover:border-primary/[0.45] transition-colors duration-200 h-full">
+                  <div className="wd-glow-card p-6 transition-colors duration-200 h-full">
                     <item.icon className={`w-8 h-8 ${item.color} mb-4`} />
                     <h3 className="text-h3 mb-2">{item.title}</h3>
                     <p className="text-body-sm text-wd-muted">{item.desc}</p>

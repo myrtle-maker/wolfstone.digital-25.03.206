@@ -30,7 +30,7 @@ const LeisurePage = () => (
   <main className="pt-20">
     <SEOHead title="Digital Marketing for Leisure Industry UK | AI SEO | Wolfstone Digital" description="AI SEO and digital marketing for leisure, hospitality, and travel brands. Get recommended by AI when consumers plan trips, dining, and experiences." canonical="/industries/leisure/" jsonLd={jsonLd} />
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <Breadcrumbs items={[{ label: "Industries", path: "/services" }, { label: "Leisure" }]} />
         <ScrollReveal><span className="text-overline text-primary mb-4 block">Leisure industry</span></ScrollReveal>
@@ -53,13 +53,13 @@ const LeisurePage = () => (
       </div>
     </section>
 
-    <section className="bg-wd-navy py-20 md:py-28">
+    <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28">
       <div className="container">
         <ScrollReveal><h2 className="text-h1 mb-10">Services for leisure brands</h2></ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <ScrollReveal key={s.path} delay={i * 0.06}>
-              <Link to={s.path} className="block bg-card border border-primary/[0.15] rounded-[12px] p-6 hover:border-primary/[0.45] transition-colors h-full">
+              <Link to={s.path} className="block wd-glow-card p-6 transition-colors h-full">
                 <s.icon className="w-8 h-8 text-primary mb-4" /><h3 className="text-h3 mb-2">{s.title}</h3>
               </Link>
             </ScrollReveal>
