@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import AuroraBackground from "@/components/AuroraBackground";
 
 interface CTASectionProps {
   heading?: string;
@@ -15,8 +16,8 @@ const CTASection = ({
   buttonText = "Book a consultation",
   buttonLink = "/contact",
 }: CTASectionProps) => (
-  <section className="bg-wd-navy wd-ambient-glow py-20 md:py-28 relative overflow-hidden border-t-2 border-[hsl(var(--wd-gold))]">
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--wd-gold))]/5 to-transparent" />
+  <section className="bg-wd-navy py-20 md:py-28 relative overflow-hidden border-t border-[hsl(var(--wd-gold))]/20">
+    <AuroraBackground intensity={0.5} showArc={false} primaryColor="38,70%,50%" secondaryColor="190,100%,45%" />
     <div className="container relative z-10 text-center">
       <ScrollReveal>
         <h2 className="text-h1 mb-6 max-w-[30ch] mx-auto text-white">{heading}</h2>

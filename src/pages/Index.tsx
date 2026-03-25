@@ -7,6 +7,7 @@ import CTASection from "@/components/CTASection";
 import LogoTexture from "@/components/LogoTexture";
 import WatermarkTexture from "@/components/WatermarkTexture";
 import CitationTicker from "@/components/CitationTicker";
+import AuroraBackground from "@/components/AuroraBackground";
 import CountUp from "@/components/CountUp";
 import {
   Search, Zap, Shield, BarChart3, Users, Brain, ArrowRight,
@@ -120,33 +121,33 @@ const Index = () => {
         jsonLd={jsonLd}
       />
 
-      {/* ═══════ HERO (LIGHT) ═══════ */}
-      <section className="relative overflow-hidden bg-[hsl(var(--wd-cream))] pt-20">
-        <LogoTexture opacity={0.03} density="sparse" variant="dark" />
+      {/* ═══════ HERO (DARK + AURORA) ═══════ */}
+      <section className="relative overflow-hidden bg-wd-navy pt-20">
+        <AuroraBackground intensity={1} showArc={true} />
 
         <div className="container relative z-10 grid min-h-[88vh] items-center gap-8 py-16 md:py-28 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1fr)] lg:gap-6 xl:gap-10">
           <div className="max-w-[40rem]">
-            <span className="text-overline text-[hsl(var(--wd-blue))] mb-4 md:mb-6 block">AI SEO & GEO — built by operators</span>
-            <h1 className="text-[clamp(1.75rem,4vw,3.5rem)] font-black leading-[1.08] tracking-[-0.03em] max-w-[20ch] mb-6 md:mb-8 text-[hsl(var(--wd-navy-text))]">
+            <span className="text-overline text-primary mb-4 md:mb-6 block">AI SEO & GEO — built by operators</span>
+            <h1 className="text-[clamp(1.75rem,4vw,3.5rem)] font-black leading-[1.08] tracking-[-0.03em] max-w-[20ch] mb-6 md:mb-8 text-white">
               We don't advise on AI visibility.<br />
-              We <span className="text-[hsl(var(--wd-blue))]">dominate it.</span>
+              We <span className="wd-gradient-text">dominate it.</span>
             </h1>
 
-            <p className="text-body md:text-body-lg text-[hsl(var(--wd-navy-text))]/80 max-w-[34rem] mb-8 md:mb-12 leading-relaxed">
+            <p className="text-body md:text-body-lg text-white/70 max-w-[34rem] mb-8 md:mb-12 leading-relaxed">
               We come from financial services — one of the most regulated, competitive sectors online. We founded and operate our own international finance brand, now the most AI-cited independent source amongst our competitors across ChatGPT, Gemini, Perplexity, Copilot, and Claude. That deep industry expertise gave us an unfair advantage in understanding what makes content genuinely authoritative. Now we deploy the same methodology for select partners.
             </p>
 
             <form onSubmit={handleHeroSubmit} className="max-w-xl mb-8 md:mb-10">
               <div className="flex flex-col sm:flex-row gap-3 mb-3">
-                <input type="text" value={heroBrand} onChange={(e) => setHeroBrand(e.target.value)} placeholder="Enter your brand name" className="flex-1 rounded-[12px] bg-[hsl(220_50%_6%/0.8)] backdrop-blur-sm border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all" required />
-                <input type="text" value={heroWebsite} onChange={(e) => setHeroWebsite(e.target.value)} placeholder="Website (optional)" className="sm:w-44 rounded-[12px] bg-[hsl(220_50%_6%/0.8)] backdrop-blur-sm border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all" />
+                <input type="text" value={heroBrand} onChange={(e) => setHeroBrand(e.target.value)} placeholder="Enter your brand name" className="flex-1 rounded-[12px] bg-white/[0.04] backdrop-blur-md border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all" required />
+                <input type="text" value={heroWebsite} onChange={(e) => setHeroWebsite(e.target.value)} placeholder="Website (optional)" className="sm:w-44 rounded-[12px] bg-white/[0.04] backdrop-blur-md border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3.5 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all" />
               </div>
               <div className="relative mb-3">
                 <textarea
                   value={heroPrompt}
                   onChange={(e) => setHeroPrompt(e.target.value)}
                   placeholder='Test a prompt, e.g. "What are the best investment platforms in the UK?"'
-                  className="w-full rounded-[12px] bg-[hsl(220_50%_6%/0.8)] backdrop-blur-sm border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all resize-none min-h-[52px]"
+                  className="w-full rounded-[12px] bg-white/[0.04] backdrop-blur-md border border-white/[0.08] text-white placeholder:text-white/35 px-5 py-3 text-[15px] focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/20 transition-all resize-none min-h-[52px]"
                   maxLength={500}
                   rows={1}
                 />
@@ -155,7 +156,7 @@ const Index = () => {
                 <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-[12px] bg-primary text-primary-foreground text-[13px] font-bold tracking-[0.05em] uppercase px-6 py-3.5 hover:bg-accent hover:shadow-glow-cyan transition-all duration-300 active:scale-[0.97] whitespace-nowrap">
                   {heroPrompt.trim() ? "Test prompt" : "Check AI visibility"} <ArrowRight size={16} />
                 </button>
-                <Link to="/contact" className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-[hsl(var(--wd-navy-text))]/15 text-[hsl(var(--wd-navy-text))] text-[13px] font-bold tracking-[0.05em] uppercase px-6 py-3.5 hover:border-[hsl(var(--wd-blue))]/40 hover:text-[hsl(var(--wd-blue))] transition-all duration-300 active:scale-[0.97] whitespace-nowrap">
+                <Link to="/contact" className="inline-flex items-center justify-center gap-2 rounded-[12px] border border-white/[0.12] text-white text-[13px] font-bold tracking-[0.05em] uppercase px-6 py-3.5 hover:border-primary/40 hover:text-primary transition-all duration-300 active:scale-[0.97] whitespace-nowrap">
                   Book a consultation
                 </Link>
               </div>
@@ -332,9 +333,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════ TESTIMONIALS (DARK) ═══════ */}
-      <section className="bg-wd-navy wd-ambient-glow py-16 md:py-36 relative overflow-hidden">
-        <LogoTexture opacity={0.015} density="sparse" />
+      {/* ═══════ TESTIMONIALS (DARK + AURORA) ═══════ */}
+      <section className="bg-wd-navy py-16 md:py-36 relative overflow-hidden">
+        <AuroraBackground intensity={0.6} showArc={false} secondaryColor="38,70%,50%" />
         <div className="container relative z-10">
           <ScrollReveal>
             <span className="text-overline text-[hsl(var(--wd-gold))] mb-5 block text-center">What partners say</span>
