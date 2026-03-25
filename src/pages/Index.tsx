@@ -123,7 +123,7 @@ const Index = () => {
 
       {/* ═══════ HERO (DARK + AURORA) ═══════ */}
       <section className="relative overflow-hidden bg-wd-navy pt-20">
-        <AuroraBackground intensity={1} showArc={true} />
+        <AuroraBackground intensity={0.7} speed={0.8} variant="cyan" />
 
         <div className="container relative z-10 grid min-h-[88vh] items-center gap-8 py-16 md:py-28 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1fr)] lg:gap-6 xl:gap-10">
           <div className="max-w-[40rem]">
@@ -335,7 +335,7 @@ const Index = () => {
 
       {/* ═══════ TESTIMONIALS (DARK + AURORA) ═══════ */}
       <section className="bg-wd-navy py-16 md:py-36 relative overflow-hidden">
-        <AuroraBackground intensity={0.6} showArc={false} secondaryColor="38,70%,50%" />
+        <AuroraBackground intensity={0.4} speed={0.6} variant="mixed" />
         <div className="container relative z-10">
           <ScrollReveal>
             <span className="text-overline text-[hsl(var(--wd-gold))] mb-5 block text-center">What partners say</span>

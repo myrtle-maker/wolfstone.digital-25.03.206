@@ -17,7 +17,7 @@ const CTASection = ({
   buttonLink = "/contact",
 }: CTASectionProps) => (
   <section className="bg-wd-navy py-20 md:py-28 relative overflow-hidden border-t border-[hsl(var(--wd-gold))]/20">
-    <AuroraBackground intensity={0.5} showArc={false} primaryColor="38,70%,50%" secondaryColor="190,100%,45%" />
+    <AuroraBackground intensity={0.4} speed={0.5} variant="gold" />
     <div className="container relative z-10 text-center">
       <ScrollReveal>
         <h2 className="text-h1 mb-6 max-w-[30ch] mx-auto text-white">{heading}</h2>
